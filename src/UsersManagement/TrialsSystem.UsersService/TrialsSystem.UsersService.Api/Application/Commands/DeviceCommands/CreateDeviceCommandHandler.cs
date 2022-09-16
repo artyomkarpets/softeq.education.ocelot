@@ -1,10 +1,11 @@
 ﻿using System.Reflection.Metadata.Ecma335;
 using MediatR;
+using TrialsSystem.UsersService.Api.Application.Commands.UserCommands;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
-namespace TrialsSystem.UsersService.Api.Application.Commands
+namespace TrialsSystem.UsersService.Api.Application.Commands.DeviceCommands
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, CreateUserResponse>
+    public class CreateDeviceCommandHandler : IRequestHandler<CreateUserCommand, CreateUserResponse>
     {
         public async Task<CreateUserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {

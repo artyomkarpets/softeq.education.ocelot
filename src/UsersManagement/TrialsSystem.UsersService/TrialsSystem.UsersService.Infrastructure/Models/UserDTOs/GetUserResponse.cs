@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrialsSystem.UsersService.Infrastructure.Models.BaseDTO;
+using TrialsSystem.UsersService.Infrastructure.Models.BaseDtos;
 
 namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
 {
@@ -22,8 +22,10 @@ namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
         public decimal? Height { get; set; }
 
         public IdNameDto City { get; set; }
-       
+
         public IdNameDto Gender { get; set; }
+
+        public IdNameDto[] Devices { get; set; }
 
     }
 }

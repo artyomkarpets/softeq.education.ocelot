@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
-namespace TrialsSystem.UsersService.Api.Application.Commands
+namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
 {
     public class CreateUserCommand : IRequest<CreateUserResponse>
     {
@@ -12,7 +12,8 @@ namespace TrialsSystem.UsersService.Api.Application.Commands
             DateTime birthDate,
             decimal? weight,
             decimal? height,
-            string genderId)
+            string genderId,
+            string userId)
         {
             Email = email;
             Name = name;

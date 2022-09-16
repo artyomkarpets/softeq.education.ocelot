@@ -1,35 +1,35 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
-using MediatR;
-using TrialsSystem.UsersService.Api.Application.Commands;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using TrialsSystem.UsersService.Api.Application.Commands.DeviceCommands;
 using TrialsSystem.UsersService.Api.Application.Commands.UserCommands;
+using TrialsSystem.UsersService.Api.Application.Queries.DeviceQueries;
 using TrialsSystem.UsersService.Api.Application.Queries.UserQueries;
 using TrialsSystem.UsersService.Api.Filters;
+using TrialsSystem.UsersService.Infrastructure.Models.DeviceDtos;
+using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
 namespace TrialsSystem.UsersService.Api.Controllers.v1
 {
-    /// <summary>
-    /// User management controller
-    /// </summary>
     [Route("api/v1/{userId}/[controller]")]
-    [ServiceFilter(typeof(UserExceptionFilter))]
+    [ServiceFilter(typeof(DeviceExceptionFilter))]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class DeviceController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public UsersController(IMediator mediator)
+        public DeviceController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
         /// <summary>
-        /// Get all users by setting parameters and filters
+        /// Get all devices by setting parameters and filters
         /// </summary>
         /// <param name="userId">authorized user Id</param>
         /// <param name="skip">skip items (pagination parameters)</param>
         /// <param name="take">take items (pagination parameters)</param>
-        /// <param name="email">part of sn (filter)</param>
+        /// <param name="sn">part of serial number  (filter)</param>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<GetUsersResponse>), StatusCodes.Status200OK)]
@@ -40,14 +40,14 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
             [FromRoute] string userId,
             [FromQuery] int? skip = 0,
             [FromQuery] int? take = null,
-            [FromQuery] string? email = null)
+            [FromQuery] string? sn = null)
         {
-            var response = await _mediator.Send(new UsersQuery(take, skip, email));
+            var response = await _mediator.Send(new DevicesQuery(take, skip, sn));
             return Ok(response);
         }
 
         /// <summary>
-        /// Get user by Id
+        /// Get device by Id
         /// </summary>
         /// <param name="userId">authorized user Id</param>
         /// <param name="id"></param>
@@ -59,30 +59,24 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
             [FromRoute] string userId,
             [FromRoute] string id)
         {
-            var response = await _mediator.Send(new UserQuery(userId, id));
+            var response = await _mediator.Send(new DeviceQuery(userId, id));
             return Ok(response);
         }
 
         /// <summary>
-        /// Create new  user
+        /// Create new  device
         /// </summary>
         /// <param name="request">Create user request model</param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostAsync([FromRoute] string userId, CreateUserRequest request)
+        public async Task<IActionResult> PostAsync([FromRoute] string userId, CreateDeviceRequest request)
         {
             var response = await _mediator.Send(new
-                CreateUserCommand(
-                request.Email,
-                request.Name,
-                request.Surname,
-                request.CityId,
-                request.BirthDate,
-                request.Weight,
-                request.Height,
-                request.GenderId,
+                CreateDeviceCommand(
+                request.SerialNumber,
+                request.Model,
                 userId));
 
             return Ok(response);
@@ -90,7 +84,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         }
 
         /// <summary>
-        /// Update user by Id
+        /// Update device by Id
         /// </summary>
         /// <param name="id"></param>
         /// <param name="request"></param>
@@ -99,24 +93,20 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         [ProducesResponseType(typeof(UpdateUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutAsync(string id,
-            [FromRoute] string userId, UpdateUserRequest request)
+            [FromRoute] string userId, UpdateDeviceRequest request)
         {
             var response = await _mediator.Send(new
-                UpdateUserCommand(id,
-                request.Name,
-                request.Surname,
-                request.CityId,
-                request.BirthDate,
-                request.Weight,
-                request.Height,
-                request.GenderId,
-                userId));
+                UpdateDeviceCommand(
+                    request.SerialNumber,
+                    request.Model,
+                    userId));
 
             return Ok(response);
+
         }
 
         /// <summary>
-        /// Delete user by Id
+        /// Delete device by Id
         /// </summary>
         /// <param name="id">UserId</param>
         /// <returns></returns>
@@ -125,7 +115,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteAsync(string id)
         {
-            await _mediator.Send(new DeleteUserCommand(id));
+            await _mediator.Send(new DeleteDeviceCommand(id));
             return Ok();
         }
     }

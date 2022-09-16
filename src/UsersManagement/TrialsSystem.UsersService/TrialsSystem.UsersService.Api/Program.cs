@@ -19,7 +19,9 @@ namespace TrialsSystem.UsersService.Api
 
             builder.Services.AddControllers();
 
-            builder.Services.AddValidatorsFromAssemblyContaining<EditUserRequestValidator>();
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateUserRequestValidator>();
+
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -36,6 +38,8 @@ namespace TrialsSystem.UsersService.Api
 
             builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
             builder.Services.AddScoped<UserExceptionFilter>();
+            builder.Services.AddScoped<DeviceExceptionFilter>();
+
 
             var app = builder.Build();
 
@@ -49,7 +53,6 @@ namespace TrialsSystem.UsersService.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

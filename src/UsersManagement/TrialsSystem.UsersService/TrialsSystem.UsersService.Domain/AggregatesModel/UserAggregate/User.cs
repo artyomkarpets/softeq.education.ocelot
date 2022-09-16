@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrialsSystem.UsersService.Domain.AggregatesModel.Base;
+using TrialsSystem.UsersService.Domain.AggregatesModel.DeviceAggregate;
 
 namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
 {
@@ -41,6 +42,7 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
         public decimal? Weight { get; private set; }
         public decimal? Height { get; private set; }
 
+        public ICollection<Device> Devices { get; set; }
 
         public void SetWeight(decimal weight)
         {
