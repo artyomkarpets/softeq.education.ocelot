@@ -2,10 +2,12 @@ using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using TrialsSystem.UsersService.Api.Application.Validation;
 using TrialsSystem.UsersService.Api.Filters;
+using TrialsSystem.UsersService.Infrastructure.Contexts;
 
 namespace TrialsSystem.UsersService.Api
 {
@@ -18,6 +20,10 @@ namespace TrialsSystem.UsersService.Api
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<UserContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("UserContextConnection")));
+
 
             builder.Services.AddFluentValidationAutoValidation();
             builder.Services.AddValidatorsFromAssemblyContaining<CreateUserRequestValidator>();
@@ -37,6 +43,7 @@ namespace TrialsSystem.UsersService.Api
             });
 
             builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+
             builder.Services.AddScoped<UserExceptionFilter>();
             builder.Services.AddScoped<DeviceExceptionFilter>();
 
