@@ -52,8 +52,14 @@ namespace TrialsSystem.UserTasksService.Domain.AggregatesModel.UserTasksAggregat
         }
 
 
-        public void SetStatus(UserTaskStatus status)
+        public void SetStatus(string statusName)
         {
+            var status = Enumeration.GetByName<UserTaskStatus>(statusName);
+
+            if (status is null)
+                throw new UserTasksDomainException("task_status_not_find");
+
+
             if (Status == UserTaskStatus.New)
             {
                 Status = status;

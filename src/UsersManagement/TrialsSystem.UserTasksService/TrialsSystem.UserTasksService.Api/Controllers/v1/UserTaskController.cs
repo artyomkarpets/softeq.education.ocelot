@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using System.ComponentModel.DataAnnotations;
+using TrialsSystem.UserTasksService.Api.Filters;
 using TrialsSystem.UserTasksService.Infrastructure.Models;
 
 namespace TrialsSystem.UserTasksService.Api.Controllers.v1
 {
+    [ServiceFilter(typeof(UserTaskExceptionFilter))]
     [Route("api/v1/{userId}/[controller]")]
     [ApiController]
     public class UserTaskController : ControllerBase

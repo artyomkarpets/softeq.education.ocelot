@@ -22,8 +22,4 @@
 	  <ProjectReference Include="..\TrialsSystem.UserTasksService.Infrastructure\TrialsSystem.UserTasksService.Infrastructure.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Filters\" />
-	</ItemGroup>
-
 </Project>

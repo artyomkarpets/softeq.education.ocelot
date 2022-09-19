@@ -49,5 +49,9 @@ namespace TrialsSystem.UserTasksService.Domain.AggregatesModel.Base
 
         public int CompareTo(object other) => Id.CompareTo(((Enumeration)other).Id);
 
+        public static T? GetByName<T>(string name) where T : Enumeration =>
+             GetAll<T>().FirstOrDefault(x => x.Name == name);
+
+
     }
 }

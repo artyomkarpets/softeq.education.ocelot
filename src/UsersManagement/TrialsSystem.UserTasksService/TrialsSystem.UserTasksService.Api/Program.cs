@@ -3,6 +3,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.OpenApi.Models;
+using TrialsSystem.UserTasksService.Api.Filters;
 
 public class Program
 {
@@ -31,6 +32,7 @@ public class Program
         });
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+        builder.Services.AddScoped<UserTaskExceptionFilter>();
 
         var app = builder.Build();
 

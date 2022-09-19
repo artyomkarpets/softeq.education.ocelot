@@ -3,18 +3,24 @@
 namespace TrialsSystem.UserTasksService.Domain.AggregatesModel.Exceptions
 {
     [Serializable]
-    internal class UserTasksDomainException : Exception
+    public class UserTasksDomainException : Exception
     {
-        public UserTasksDomainException()
+        public string Name { get; }
+
+
+        public UserTasksDomainException(string name)
         {
+            Name = name;
         }
 
-        public UserTasksDomainException(string? message) : base(message)
+        public UserTasksDomainException(string name, string? message) : base(message)
         {
+            Name = name;
         }
 
-        public UserTasksDomainException(string? message, Exception? innerException) : base(message, innerException)
+        public UserTasksDomainException(string name, string? message, Exception? innerException) : base(message, innerException)
         {
+            Name = name;
         }
 
         protected UserTasksDomainException(SerializationInfo info, StreamingContext context) : base(info, context)

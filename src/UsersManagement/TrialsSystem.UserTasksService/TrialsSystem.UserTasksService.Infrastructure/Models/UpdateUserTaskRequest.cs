@@ -12,6 +12,6 @@ namespace TrialsSystem.UserTasksService.Infrastructure.Models
         public string UserId { get; set; }
         public string Status { get; set; }
 
-        public Dictionary<string, string> AdditionalProperty { get; set; }
+        public Dictionary<string, string> AdditionalProperties { get; set; }
     }
 }
