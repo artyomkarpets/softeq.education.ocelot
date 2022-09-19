@@ -4,13 +4,13 @@ namespace TrialsSystem.UserTasksService.Api.Application.Commands
 {
     public class DeleteUserTaskCommand : IRequest
     {
-        public DeleteUserTaskCommand(string id, string authorizedUserId)
+        public DeleteUserTaskCommand(string name, string authorizedUserId)
         {
-            Id = id;
+            Name = name;
             AuthorizedUserId = authorizedUserId;
         }
 
-        public string Id { get; }
+        public string Name { get; }
         public string AuthorizedUserId { get; }
 
     }

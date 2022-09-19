@@ -20,7 +20,11 @@ namespace TrialsSystem.UserTasksService.Domain.AggregatesModel.Base
         public bool IsDeleted { get; protected set; }
         public DateTime CreatedDateTime { get; protected set; }
         public DateTime LastUpdatedDateTime { get; protected set; }
-        public string CreatedBy { get; protected set; }
+
+        public void Delete()
+        {
+            IsDeleted = true;
+        }
 
     }
 }

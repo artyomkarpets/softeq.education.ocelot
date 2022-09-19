@@ -24,7 +24,7 @@ namespace TrialsSystem.UserTasksService.Infrastructure.Repositories
             }
             catch (MongoWriteException me)
             {
-                throw new UserTaskConflictException("User task has already existed", me);
+                throw new UserTaskConflictException("user_task_has_already_existed", me);
             }
             catch (MongoException e)
             {
@@ -55,12 +55,13 @@ namespace TrialsSystem.UserTasksService.Infrastructure.Repositories
             }
         }
 
-        public async Task<IEnumerable<UserTask>> GetAsync(string userId, string name)
+        public async Task<IEnumerable<UserTask>> GetAsync(string userId, string? name)
         {
             var builder = Builders<UserTask>.Filter;
             var filter = builder.Eq(q => q.UserId, userId);
+            filter &= builder.Eq(x => x.IsDeleted, true);
 
-            if (name != null)
+            if (name is not null)
             {
                 filter &= builder.Eq(q => q.Name, name);
             }
@@ -68,21 +69,20 @@ namespace TrialsSystem.UserTasksService.Infrastructure.Repositories
             return await _collection.Find(filter).ToListAsync();
         }
 
-        public async Task<UserTask> GetByIdAsync(string id, string userId)
+        public async Task<UserTask> GetByNameAsync(string name, string userId)
         {
             var builder = Builders<UserTask>.Filter;
-            var filter = builder.Eq(q => q.Id, id) & builder.Eq(q => q.UserId, userId);
+            var filter = builder.Eq(q => q.Name, name) & builder.Eq(q => q.UserId, userId);
+            filter &= builder.Eq(x => x.IsDeleted, false);
 
             return await _collection.Find(filter).FirstOrDefaultAsync();
         }
 
-        public async Task DeleteByNameAsync(string patientId, string taskName)
+        public async Task DeleteByNameAsync(string userId, string taskName)
         {
-            var builder = Builders<UserTask>.Filter;
-            var filter = builder.Eq(x => x.UserId, patientId);
-            filter &= builder.Eq(x => x.Name, taskName);
-
-            await _collection.DeleteManyAsync(filter);
+            var item = await GetByNameAsync(userId, taskName);
+            item.Delete();
+            await UpdateeAsync(item);
         }
 
     }

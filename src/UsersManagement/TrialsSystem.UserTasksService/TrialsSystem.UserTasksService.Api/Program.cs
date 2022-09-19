@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using TrialsSystem.UserTasksService.Api.Filters;
 using TrialsSystem.UserTasksService.Domain.AggregatesModel.UserTasksAggregate;
 using TrialsSystem.UserTasksService.Infrastructure;
+using TrialsSystem.UserTasksService.Infrastructure.Mapping;
 using TrialsSystem.UserTasksService.Infrastructure.Repositories;
 using TrialSystem.Shared.MongoConfigurations;
 
@@ -38,6 +39,7 @@ public class Program
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddScoped<UserTaskExceptionFilter>();
+        builder.Services.AddAutoMapper(typeof(UserTaskMappingProfile).Assembly);
         builder.Services.AddHttpContextAccessor();
 
         ConfigureUserTasksDAL(builder);

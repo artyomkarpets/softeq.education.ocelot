@@ -13,6 +13,8 @@ namespace TrialsSystem.UserTasksService.Api.Application.Commands
             Status = status;
         }
 
+        public string Id { get; set; }
+
         public string Name { get; }
 
         public string UserId { get; }

@@ -118,8 +118,13 @@ namespace TrialsSystem.UserTasksService.Api.Controllers.v1
             [FromRoute][Required] string userId,
             [FromBody] UpdateUserTaskRequest request)
         {
+            var result = await _mediator.Send(
+                new UpdateUserTaskCommand(request.Name,
+                userId,
+                request.Status,
+                request.AdditionalProperties));
 
-            return Ok(new UserTaskResponse());
+            return Ok(result);
         }
 
     }

@@ -7,11 +7,11 @@ namespace TrialsSystem.UserTasksService.Api.Application.Commands
     public class CreateUserTaskCommandHandler : IRequestHandler<CreateUserTaskCommand, string>
     {
         private readonly IUserTaskRepository _repository;
-
         public CreateUserTaskCommandHandler(IUserTaskRepository repository)
         {
             _repository = repository;
         }
+
         public async Task<string> Handle(CreateUserTaskCommand request, CancellationToken cancellationToken)
         {
             var task = new UserTask(request.UserId, request.Name);

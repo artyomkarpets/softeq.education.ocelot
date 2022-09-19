@@ -11,7 +11,7 @@ namespace TrialsSystem.UserTasksService.Domain.AggregatesModel.UserTasksAggregat
         Task<string> CreateAsync(UserTask patientTask);
         Task<UserTask> UpdateeAsync(UserTask userTask);
         Task<IEnumerable<UserTask>> GetAsync(string userId, string name);
-        Task<UserTask> GetByIdAsync(string id, string userId);
-        Task DeleteByNameAsync(string patientId, string taskName);
+        Task<UserTask> GetByNameAsync(string name, string userId);
+        Task DeleteByNameAsync(string userId, string taskName);
     }
 }
