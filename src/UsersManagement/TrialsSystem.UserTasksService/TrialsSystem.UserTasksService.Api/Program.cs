@@ -2,8 +2,13 @@ using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using TrialsSystem.UserTasksService.Api.Filters;
+using TrialsSystem.UserTasksService.Domain.AggregatesModel.UserTasksAggregate;
+using TrialsSystem.UserTasksService.Infrastructure;
+using TrialsSystem.UserTasksService.Infrastructure.Repositories;
+using TrialSystem.Shared.MongoConfigurations;
 
 public class Program
 {
@@ -33,6 +38,9 @@ public class Program
 
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
         builder.Services.AddScoped<UserTaskExceptionFilter>();
+        builder.Services.AddHttpContextAccessor();
+
+        ConfigureUserTasksDAL(builder);
 
         var app = builder.Build();
 
@@ -50,5 +58,18 @@ public class Program
         app.MapControllers();
 
         app.Run();
+    }
+
+
+    private static void ConfigureUserTasksDAL(WebApplicationBuilder builder)
+    {
+
+        builder.Services.AddMongoCollection<UserTask>(
+            builder.Configuration.GetConnectionString(ConnectionStrings.UserTasksDatabase),
+            builder.Configuration.GetValue<string>("UsersTasksCollectionName"));
+
+        builder.Services.AddScoped<IUserTaskRepository, UserTaskRepository>();
+
+
     }
 }

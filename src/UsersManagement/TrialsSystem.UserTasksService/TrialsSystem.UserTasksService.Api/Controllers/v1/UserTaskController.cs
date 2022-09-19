@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using System.ComponentModel.DataAnnotations;
+using TrialsSystem.UserTasksService.Api.Application.Commands;
 using TrialsSystem.UserTasksService.Api.Filters;
 using TrialsSystem.UserTasksService.Infrastructure.Models;
 
@@ -87,8 +88,12 @@ namespace TrialsSystem.UserTasksService.Api.Controllers.v1
             [FromRoute][Required] string userId,
             [FromBody] CreateUserTaskRequest request)
         {
+            var id = await _mediator.Send(new CreateUserTaskCommand(request.Name,
+                request.UserId,
+                request.AdditionalProperties));
+
             var helper = _factory.GetUrlHelper(ControllerContext);
-            var uri = helper.Action("Get", new { patientId = userId, id = "" });//TODO: return if of new task
+            var uri = helper.Action("Get", new { userId, id });
             return Created(uri, null);
         }
 

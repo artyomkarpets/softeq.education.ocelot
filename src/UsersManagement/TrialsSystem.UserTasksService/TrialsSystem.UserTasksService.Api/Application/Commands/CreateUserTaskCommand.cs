@@ -3,7 +3,7 @@ using TrialsSystem.UserTasksService.Infrastructure.Models;
 
 namespace TrialsSystem.UserTasksService.Api.Application.Commands
 {
-    public class CreateUserTaskCommand : IRequest<UserTaskResponse>
+    public class CreateUserTaskCommand : IRequest<string>
     {
         public CreateUserTaskCommand(string name, string userId, Dictionary<string, string> additionalProperties)
         {
