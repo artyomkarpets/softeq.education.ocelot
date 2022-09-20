@@ -10,6 +10,9 @@ resources:
 
 variables:
   tag: '$(Build.BuildId)'
+  Major: '1'
+  Minor: '0'
+  Patch: '0'
 
 stages:
 - stage: Build
@@ -28,3 +31,21 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/src/UsersManagement/TrialsSystem.UsersService/Dockerfile'
         tags: |
           $(tag)
+    - task: NuGetCommand@2
+      inputs:
+        command: pack
+        packagesToPack: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
+        packDestination: '$(Build.ArtifactStagingDirectory)'
+        versioningScheme: byPrereleaseNumber
+        majorVersion: '$(Major)'
+        minorVersion: '$(Minor)'
+        patchVersion: '$(Patch)'
+    - task: NuGetAuthenticate@0
+      displayName: 'NuGet Authenticate'
+    - task: NuGetCommand@2
+      displayName: 'NuGet push'
+      inputs:
+        command: push
+        publishVstsFeed: 'Softeq.Lernong.TrialSystem/TS_Nuget'
+        allowPackageConflicts: true
+    
