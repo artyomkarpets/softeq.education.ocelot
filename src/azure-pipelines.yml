@@ -34,7 +34,7 @@ stages:
     - task: NuGetCommand@2
       inputs:
         command: pack
-        packagesToPack: '$(Build.SourcesDirectory)/src/Shared/*.csproj'
+        packagesToPack: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/*.csproj'
         packDestination: '$(Build.ArtifactStagingDirectory)'
         versioningScheme: byPrereleaseNumber
         majorVersion: '$(Major)'
@@ -46,6 +46,6 @@ stages:
       displayName: 'NuGet push'
       inputs:
         command: push
-        publishVstsFeed: '<projectName>/<feed>'
+        publishVstsFeed: 'Softeq.Lernong.TrialSystem/TS_Nuget'
         allowPackageConflicts: true
     
