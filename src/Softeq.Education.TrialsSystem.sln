@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrialsSystem.UserTasksServi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BA0509B7-2F0A-4A94-A216-4BDB05440AC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrialSystem.Shared.MongoConfigurations", "TrialSystem.Shared.MongoConfigurations\TrialSystem.Shared.MongoConfigurations.csproj", "{EBA6EC38-CF20-4C51-B7E3-2AF26D600190}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrialSystem.Shared.MongoConfigurations", "Shared\TrialSystem.Shared.MongoConfigurations\TrialSystem.Shared.MongoConfigurations.csproj", "{99A1EBD7-B836-44E7-833A-D552F89F6D30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +75,10 @@ Global
 		{9183DA59-BCCE-4059-86D1-7E6F4A7DCB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9183DA59-BCCE-4059-86D1-7E6F4A7DCB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9183DA59-BCCE-4059-86D1-7E6F4A7DCB8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EBA6EC38-CF20-4C51-B7E3-2AF26D600190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBA6EC38-CF20-4C51-B7E3-2AF26D600190}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBA6EC38-CF20-4C51-B7E3-2AF26D600190}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBA6EC38-CF20-4C51-B7E3-2AF26D600190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A1EBD7-B836-44E7-833A-D552F89F6D30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A1EBD7-B836-44E7-833A-D552F89F6D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A1EBD7-B836-44E7-833A-D552F89F6D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A1EBD7-B836-44E7-833A-D552F89F6D30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,7 +97,7 @@ Global
 		{8325A23A-F115-41CB-858A-2AC09DCE9472} = {723FAAA7-1943-4C4A-B547-E0DDD0130014}
 		{AA101E90-39CF-42BA-9012-8D292EC81E77} = {723FAAA7-1943-4C4A-B547-E0DDD0130014}
 		{9183DA59-BCCE-4059-86D1-7E6F4A7DCB8D} = {723FAAA7-1943-4C4A-B547-E0DDD0130014}
-		{EBA6EC38-CF20-4C51-B7E3-2AF26D600190} = {BA0509B7-2F0A-4A94-A216-4BDB05440AC5}
+		{99A1EBD7-B836-44E7-833A-D552F89F6D30} = {BA0509B7-2F0A-4A94-A216-4BDB05440AC5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BA20357-52AA-484F-BC0C-7AD5880BBE7B}
