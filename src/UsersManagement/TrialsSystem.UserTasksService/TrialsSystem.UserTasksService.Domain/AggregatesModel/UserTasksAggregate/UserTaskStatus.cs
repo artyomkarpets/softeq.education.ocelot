@@ -14,8 +14,7 @@ namespace TrialsSystem.UserTasksService.Domain.AggregatesModel.UserTasksAggregat
         public static UserTaskStatus InProgress = new(2, nameof(InProgress));
         public static UserTaskStatus Completed = new(3, nameof(Completed));
         public static UserTaskStatus Reopen = new(3, nameof(Reopen));
-
-
+        
         public UserTaskStatus(int id, string name)
             : base(id, name)
         {

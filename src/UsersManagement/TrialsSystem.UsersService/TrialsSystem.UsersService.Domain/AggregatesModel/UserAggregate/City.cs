@@ -10,6 +10,14 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
 {
     public class City : Entity
     {
-        public string Name { get; set; }
+        public City(string name, Guid id)
+        {
+            Name = name;
+            CreatedDate = DateTime.UtcNow;
+            LastModifiedDateDate = DateTime.UtcNow;
+            Id = id;
+        }
+
+        public string Name { get; private set; }
     }
 }

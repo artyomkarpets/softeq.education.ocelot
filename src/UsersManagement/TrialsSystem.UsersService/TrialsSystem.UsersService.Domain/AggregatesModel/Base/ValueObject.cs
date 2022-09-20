@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,8 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.Base
 {
     public abstract class ValueObject
     {
-        public string Id { get; protected set; }
+        [Key]
+        public Guid Id { get; protected set; }
 
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {

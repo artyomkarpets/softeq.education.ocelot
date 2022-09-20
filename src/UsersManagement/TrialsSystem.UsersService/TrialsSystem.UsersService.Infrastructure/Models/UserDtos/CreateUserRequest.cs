@@ -21,9 +21,9 @@ namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
 
         public decimal? Height { get; set; }
 
-        public string CityId { get; set; }
+        public Guid CityId { get; set; }
 
-        public string GenderId { get; set; }
+        public Guid GenderId { get; set; }
 
     }
 }

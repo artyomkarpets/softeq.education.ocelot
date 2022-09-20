@@ -38,11 +38,14 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
 
         public async Task<IActionResult> GetAsync(
             [FromRoute] string userId,
-            [FromQuery] int? skip = 0,
-            [FromQuery] int? take = null,
-            [FromQuery] string? email = null)
+            [FromQuery] int skip = 0,
+            [FromQuery] int take = 20,
+            [FromQuery] string? email = null,
+            [FromQuery] string? name = null,
+            [FromQuery] string? surname = null)
         {
-            var response = await _mediator.Send(new UsersQuery(take, skip, email));
+            var response = await _mediator.Send(
+                new UsersQuery(take, skip, email, name, surname));
             return Ok(response);
         }
 
@@ -52,7 +55,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         /// <param name="userId">authorized user Id</param>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(GetUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAsync(
@@ -64,9 +67,9 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         }
 
         /// <summary>
-        /// Create new  user
+        /// CreateAsync new  user
         /// </summary>
-        /// <param name="request">Create user request model</param>
+        /// <param name="request">CreateAsync user request model</param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
@@ -95,7 +98,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         /// <param name="id"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(UpdateUserResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutAsync(string id,
@@ -120,7 +123,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         /// </summary>
         /// <param name="id">UserId</param>
         /// <returns></returns>
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> DeleteAsync(string id)
