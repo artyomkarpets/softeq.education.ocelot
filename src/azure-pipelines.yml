@@ -48,11 +48,7 @@ stages:
         command: 'build'
         projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
   
-  - job:  NugetPublish
-    displayName: Nuget Publish
-    dependsOn: NugetBuild
-    condition: succeeded()
-    steps:
+
     - task: NuGetCommand@2
       inputs:
         command: pack
@@ -61,11 +57,4 @@ stages:
         majorVersion: '$(Major)'
         minorVersion: '$(Minor)'
         patchVersion: '$(Patch)'
-    - task: NuGetAuthenticate@0
-      displayName: 'NuGet Authenticate'
-    - task: NuGetCommand@2
-      displayName: 'NuGet push'
-      inputs:
-        command: push
-        publishVstsFeed: 'Softeq.Lernong.TrialSystem/TS_Nuget'
-        allowPackageConflicts: true
+
