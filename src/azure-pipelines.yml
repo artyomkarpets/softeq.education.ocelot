@@ -36,17 +36,17 @@ stages:
    
 
   - job:  NugetBuild
-    displayName: nugetbuild
+    displayName: Nuget Build
     steps:
     - task: DotNetCoreCLI@2
       inputs:
         command: 'restore'
-        projects: '/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
+        projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
         feedsToUse: 'select'
     - task: DotNetCoreCLI@2
       inputs:
         command: 'build'
-        projects: '/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
+        projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
   
   - job:  NugetPublish
     displayName: Nuget Publish
