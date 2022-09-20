@@ -39,17 +39,19 @@ stages:
     displayName: Nuget Build
     steps:
     - task: DotNetCoreCLI@2
+      displayName: "restore"
       inputs:
         command: 'restore'
         projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
         feedsToUse: 'select'
     - task: DotNetCoreCLI@2
+      displayName: "build"
       inputs:
         command: 'build'
         projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
   
-
     - task: NuGetCommand@2
+      displayName: "pack"
       inputs:
         command: pack
         packagesToPack: '**/TrialSystem.Shared.MongoConfigurations.csproj'
@@ -57,4 +59,13 @@ stages:
         majorVersion: '$(Major)'
         minorVersion: '$(Minor)'
         patchVersion: '$(Patch)'
+    - task: NuGetAuthenticate@0
+      displayName: 'NuGet Authenticate'
+    - task: NuGetCommand@2
+      displayName: 'NuGet push'
+      inputs:
+        command: push
+        publishVstsFeed: 'Softeq.Lernong.TrialSystem/TS_Nuget'
+        allowPackageConflicts: true
+
 
