@@ -10,6 +10,13 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
 {
     public class Gender : ValueObject
     {
+        public Gender(string name, Guid id)
+        {
+            Id = id;
+            Name = name;
+
+        }
+
         public string Name { get; set; }
 
         protected override IEnumerable<object> GetEqualityComponents()

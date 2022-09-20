@@ -64,9 +64,9 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         }
 
         /// <summary>
-        /// Create new  device
+        /// CreateAsync new  device
         /// </summary>
-        /// <param name="request">Create user request model</param>
+        /// <param name="request">CreateAsync user request model</param>
         /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]

@@ -9,6 +9,8 @@ namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
 {
     public class GetUserResponse
     {
+        public Guid Id { get; set; }
+
         public string Email { get; set; }
 
         public string Name { get; set; }

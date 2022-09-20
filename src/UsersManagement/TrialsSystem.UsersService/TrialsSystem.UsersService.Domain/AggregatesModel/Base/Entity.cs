@@ -33,7 +33,6 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.Base
         public bool IsDeleted { get; protected set; }
 
         public DateTime CreatedDate { get; protected set; }
-        public string CreatedBy { get; protected set; }
 
         public DateTime LastModifiedDateDate { get; protected set; }
 

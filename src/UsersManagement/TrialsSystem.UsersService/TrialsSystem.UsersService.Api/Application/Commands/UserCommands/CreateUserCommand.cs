@@ -8,11 +8,11 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
         public CreateUserCommand(string email,
             string name,
             string surname,
-            string cityId,
+            Guid cityId,
             DateTime birthDate,
             decimal? weight,
             decimal? height,
-            string genderId,
+            Guid genderId,
             string userId)
         {
             Email = email;
@@ -31,7 +31,7 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
 
         public string Surname { get; }
 
-        public string CityId { get; }
+        public Guid CityId { get; }
 
         public DateTime BirthDate { get; }
 
@@ -39,7 +39,7 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
 
         public decimal? Height { get; }
 
-        public string GenderId { get; }
+        public Guid GenderId { get; }
 
 
     }

@@ -12,7 +12,7 @@ using TrialsSystem.UsersService.Infrastructure.Contexts;
 namespace TrialsSystem.UsersService.Infrastructure.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220919121619_InitialCreate")]
+    [Migration("20220920055148_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -45,10 +45,6 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -101,10 +97,6 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -121,6 +113,16 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"),
+                            CreatedDate = new DateTime(2022, 9, 20, 5, 51, 48, 82, DateTimeKind.Utc).AddTicks(3978),
+                            IsDeleted = false,
+                            LastModifiedDateDate = new DateTime(2022, 9, 20, 5, 51, 48, 82, DateTimeKind.Utc).AddTicks(3980),
+                            Name = "New York"
+                        });
                 });
 
             modelBuilder.Entity("TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate.Gender", b =>
@@ -136,6 +138,23 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c7166a6d-3aaa-4b99-a9d3-9a5294a78cfc"),
+                            Name = "Male"
+                        },
+                        new
+                        {
+                            Id = new Guid("86d01f4c-a514-4858-ac44-21e56e2d7e0c"),
+                            Name = "Female"
+                        },
+                        new
+                        {
+                            Id = new Guid("e50ea91e-966a-4723-a6d5-42b63d4d9c0b"),
+                            Name = "Divers"
+                        });
                 });
 
             modelBuilder.Entity("TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate.User", b =>
@@ -149,10 +168,6 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
 
                     b.Property<Guid>("CityId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
