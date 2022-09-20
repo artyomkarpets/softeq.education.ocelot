@@ -67,5 +67,6 @@ stages:
         command: push
         publishVstsFeed: 'Softeq.Lernong.TrialSystem/TS_Nuget'
         allowPackageConflicts: true
+        
 
 
