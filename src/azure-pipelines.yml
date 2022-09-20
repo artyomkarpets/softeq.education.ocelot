@@ -34,7 +34,7 @@ stages:
     - task: NuGetCommand@2
       inputs:
         command: pack
-        packagesToPack: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/*.csproj'
+        packagesToPack: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
         packDestination: '$(Build.ArtifactStagingDirectory)'
         versioningScheme: byPrereleaseNumber
         majorVersion: '$(Major)'
