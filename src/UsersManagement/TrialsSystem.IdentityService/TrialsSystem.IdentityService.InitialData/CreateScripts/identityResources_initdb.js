@@ -1,4 +1,4 @@
-var identityServerDb = db.getSiblingDB('TS-IdentityServer');
+var identityServerDb = db.getSiblingDB('TS_IdentityServer');
 var collection = identityServerDb.getCollection("IdentityResources");
 if(collection.countDocuments({}) === 0) {
   collection.insertMany([{
@@ -14,9 +14,6 @@ if(collection.countDocuments({}) === 0) {
       "Value": null
     },{
       "Type": "role",
-      "Value": null
-    },{ 
-      "Type": "PreferredLanguage",
       "Value": null
     }]
   }]);

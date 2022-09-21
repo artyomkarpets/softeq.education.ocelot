@@ -28,7 +28,8 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                 .AddIdentityCore<ApplicationUser>(options =>
                 {
                     options.Lockout.AllowedForNewUsers = true;
-                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(configuration.GetValue<double>("DefaultLockoutTime"));
+                    options.Lockout.DefaultLockoutTimeSpan =
+                        TimeSpan.FromMinutes(configuration.GetValue<double>("DefaultLockoutTime"));
                     options.Lockout.MaxFailedAccessAttempts = configuration.GetValue<int>("DefaultFailedAttempts");
                 })
                 .AddRoles<MongoRole>()
@@ -37,6 +38,7 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                     options.ConnectionString = userConnectionString;
                 })
                 .AddDefaultTokenProviders();
+
             return services;
         }
 

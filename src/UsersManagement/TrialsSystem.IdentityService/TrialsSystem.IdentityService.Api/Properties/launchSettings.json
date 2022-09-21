@@ -10,19 +10,19 @@
   },
   "profiles": {
     "TrialsSystem.IdentityService.Api": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7206;http://localhost:5206",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "commandName": "Project",
+        "dotnetRunMessages": true,
+        "launchBrowser": true,
+        "launchUrl": "home",
+        "applicationUrl": "https://localhost:7206;http://localhost:5206",
+        "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

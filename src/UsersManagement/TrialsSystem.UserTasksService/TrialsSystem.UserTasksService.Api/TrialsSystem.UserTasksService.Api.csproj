@@ -24,7 +24,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Shared\TrialSystem.Shared.MongoConfigurations\TrialSystem.Shared.MongoConfigurations.csproj" />
-	  <ProjectReference Include="..\..\..\TrialSystem.Shared.MongoConfigurations\TrialSystem.Shared.MongoConfigurations.csproj" />
 	  <ProjectReference Include="..\TrialsSystem.UserTasksService.Domain\TrialsSystem.UserTasksService.Domain.csproj" />
 	  <ProjectReference Include="..\TrialsSystem.UserTasksService.Infrastructure\TrialsSystem.UserTasksService.Infrastructure.csproj" />
 	</ItemGroup>

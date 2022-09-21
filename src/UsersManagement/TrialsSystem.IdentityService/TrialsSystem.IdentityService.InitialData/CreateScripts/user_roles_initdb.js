@@ -1,4 +1,4 @@
-var db = db.getSiblingDB('TS-Users');
+var db = db.getSiblingDB('TS_IdentityServer');
 var collectionName = "Roles";
 var collections = db.getCollectionNames();
 
@@ -22,15 +22,21 @@ else {
 
 if(collection.countDocuments({}) === 0) {
   collection.insertMany([{
-    "Name": "Patient",
-    "NormalizedName": "PATIENT",
+    "Name": "Participant",
+    "NormalizedName": "PARTICIPANT",
     "ConcurrencyStamp": "e34f9ad0-eb46-47f2-b5ff-3a06b1914cee",
     "Claims" : []
   },
   {
-    "Name" : "Volunteer",
-    "NormalizedName" : "VOLUNTEER",
+    "Name" : "Observer",
+    "NormalizedName" : "OBSERVER",
     "ConcurrencyStamp" : "d4a69485-e2bd-4133-b15d-632d9839aeb0",
+    "Claims" : []
+  }, 
+  {
+    "Name" : "Admin",
+    "NormalizedName" : "ADMIN",
+    "ConcurrencyStamp" : "e966431d-73d4-4871-b2ce-5e6a372a634a",
     "Claims" : []
   }]);
 }

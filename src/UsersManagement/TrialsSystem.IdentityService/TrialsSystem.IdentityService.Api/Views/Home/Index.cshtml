@@ -1,0 +1,22 @@
+@using System.Diagnostics
+
+@{
+
+}
+
+<div class="welcome-page">
+    <h1>
+        <img src="~/icon.jpg">
+        Welcome Trial System
+        <small class="text-muted"></small>
+    </h1>
+
+    <ul>
+        <li>
+            <a href="@Url.Action("Login","Account", new {returnUrl="#"})">Login</a>
+        </li>
+        <li>
+            <a href="@Url.Action("Register","Account", new {returnUrl="#"})">Registration</a>
+        </li>
+    </ul>
+</div>

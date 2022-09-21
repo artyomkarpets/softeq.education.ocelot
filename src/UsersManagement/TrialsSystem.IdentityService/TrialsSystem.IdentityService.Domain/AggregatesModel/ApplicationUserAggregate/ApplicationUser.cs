@@ -10,8 +10,9 @@ namespace TrialsSystem.IdentityService.Domain.AggregatesModel.ApplicationUserAgg
     public class ApplicationUser : MongoUser
     {
         public ApplicationUser(string userName)
-            : base(userName) { }
-
-
+            : base(userName)
+        {
+            Email = userName;
+        }
     }
 }

@@ -1,10 +1,10 @@
-var identityServerDb = db.getSiblingDB('TS-IdentityServer');
+var identityServerDb = db.getSiblingDB('TS_IdentityServer');
 var collection = identityServerDb.getCollection("ApiScopes");
 
 if(collection.countDocuments({}) === 0) {
   collection.insertMany([{
-    "Name": "treatment",
-    "DisplayName": "Treatment API as Api gateway for Mobile app",
+    "Name": "trial",
+    "DisplayName": "Trial API as Api gateway",
     "Description": null,
     "Required": false,
     "Emphasize": false,
@@ -12,7 +12,7 @@ if(collection.countDocuments({}) === 0) {
     "UserClaims": []
   },{
     "Name": "identity",
-    "DisplayName": "Identity API for Mobile app",
+    "DisplayName": "Identity API",
     "Description": null,
     "Required": false,
     "Emphasize": false,

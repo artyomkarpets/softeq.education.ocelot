@@ -1,15 +1,16 @@
-var identityServerDb = db.getSiblingDB('TS-IdentityServer');
+var identityServerDb = db.getSiblingDB('TS_IdentityServer');
 var collection = identityServerDb.getCollection("Clients");
 
 if (collection.countDocuments({}) === 0) {
   collection.insertMany(
-    [{
+    [
+      {
         "Enabled": true,
-        "ClientId": "reporting_service",
+        "ClientId": "web",
         "ProtocolType": "oidc",
         "ClientSecrets": [{
           "Description": null,
-          "Value": "4uN3rKQbQw9pkJBI2CbG0VycdNc3GYKGvZrNCzZrmPw=",
+          "Value": "SO2EXXgXBs8YdkSxYS8JjLvBAQXNYrZkQCATnnyLPD4=",//cafd9713-c6c5-4096-a29d-02988424942b
           "Expiration": null,
           "Type": "SharedSecret",
           "Created": new Date()
@@ -31,93 +32,11 @@ if (collection.countDocuments({}) === 0) {
         "AllowAccessTokensViaBrowser": true,
         "RedirectUris": [
           "http://localhost:8080",
-          "http://localhost:3000",
-          "https://se.qa.meine-inka.de",
-          "http://192.168.68.102:3000",
-          "https://ts.stg.meine-inka.de"
+          "http://localhost:3000"
         ],
         "PostLogoutRedirectUris": [
           "http://localhost:8080",
-          "http://localhost:3000",
-          "https://se.qa.meine-inka.de",
-          "http://192.168.68.102:3000",
-          "https://ts.stg.meine-inka.de"
-        ],
-        "FrontChannelLogoutUri": null,
-        "FrontChannelLogoutSessionRequired": true,
-        "BackChannelLogoutUri": null,
-        "BackChannelLogoutSessionRequired": true,
-        "AllowOfflineAccess": true,
-        "AllowedScopes": [
-          "treatment",
-          "openid"
-        ],
-        "IdentityTokenLifetime": 300.0,
-        "AllowedIdentityTokenSigningAlgorithms": [],
-        "AccessTokenLifetime": 3600.0,
-        "AuthorizationCodeLifetime": 300.0,
-        "AbsoluteRefreshTokenLifetime": 2592000.0,
-        "SlidingRefreshTokenLifetime": 1296000.0,
-        "ConsentLifetime": null,
-        "RefreshTokenUsage": 1.0,
-        "UpdateAccessTokenClaimsOnRefresh": false,
-        "RefreshTokenExpiration": 1.0,
-        "AccessTokenType": 0.0,
-        "EnableLocalLogin": true,
-        "IdentityProviderRestrictions": [],
-        "IncludeJwtId": true,
-        "Claims": [],
-        "AlwaysSendClientClaims": true,
-        "ClientClaimsPrefix": "client_",
-        "PairWiseSubjectSalt": null,
-        "UserSsoLifetime": null,
-        "UserCodeType": null,
-        "DeviceCodeLifetime": 300.0,
-        "AllowedCorsOrigins": [],
-        "Properties": [],
-        "Created": ISODate("2022-03-08T19:13:00.569Z"),
-        "Updated": null,
-        "LastAccessed": null
-      },
-      {
-        "Enabled": true,
-        "ClientId": "systematic_evaluation",
-        "ProtocolType": "oidc",
-        "ClientSecrets": [{
-          "Description": null,
-          "Value": "KAQu70uuYSUGVOSKsg/H0VWzOaNQybOBEzf8TVw87+E=",
-          "Expiration": null,
-          "Type": "SharedSecret",
-          "Created": ISODate("2022-03-08T19:13:00.569Z")
-        }],
-        "RequireClientSecret": false,
-        "ClientName": null,
-        "Description": null,
-        "ClientUri": null,
-        "LogoUri": null,
-        "RequireConsent": false,
-        "AllowRememberConsent": true,
-        "AlwaysIncludeUserClaimsInIdToken": true,
-        "AllowedGrantTypes": [
-          "authorization_code"
-        ],
-        "RequirePkce": true,
-        "AllowPlainTextPkce": false,
-        "RequireRequestObject": false,
-        "AllowAccessTokensViaBrowser": true,
-        "RedirectUris": [
-          "http://localhost:8080",
-          "http://localhost:3000",
-          "https://se.qa.meine-inka.de",
-          "http://192.168.68.102:3000",
-          "https://ts.stg.meine-inka.de"
-        ],
-        "PostLogoutRedirectUris": [
-          "http://localhost:8080",
-          "http://localhost:3000",
-          "https://se.qa.meine-inka.de",
-          "http://192.168.68.102:3000",
-          "https://ts.stg.meine-inka.de"
+          "http://localhost:3000"
         ],
         "FrontChannelLogoutUri": null,
         "FrontChannelLogoutSessionRequired": true,
@@ -162,7 +81,7 @@ if (collection.countDocuments({}) === 0) {
         "ProtocolType": "oidc",
         "ClientSecrets": [{
           "Description": null,
-          "Value": "jylY49CdjGuHW2d6KhfLRwhQk9eoAR75i5S4jvF27pg=",
+          "Value": "GkX++b2JqTA0ZXC0KnbByxuC8wj55MGiWQFGyEeezjQ=",//ace5cdae-952b-479c-baec-575acf58d866
           "Expiration": null,
           "Type": "SharedSecret",
           "Created": new Date(),
@@ -228,7 +147,7 @@ if (collection.countDocuments({}) === 0) {
         "ProtocolType": "oidc",
         "ClientSecrets": [{
           "Description": null,
-          "Value": "ej5b0f5so0IYj6JHTdoIvZaIqGmWEREzv/cjUwJMqN0=",
+          "Value": "GXEhgCSjhccD/sN+OFR71eZAb1seBqduVaNjgrOy4jI=",//164f3a38-1500-4f00-9046-3c2298e7f356
           "Expiration": null,
           "Type": "SharedSecret",
           "Created": new Date(),
@@ -291,7 +210,7 @@ if (collection.countDocuments({}) === 0) {
         "ProtocolType": "oidc",
         "ClientSecrets": [{
           "Description": null,
-          "Value": "CD0rvHk8mztwNUfNWFsHQC+GTOapIDIo6ISMDA4vpsM=",
+          "Value": "hu/ZGsJmltMZYVOpoOZqVFFbBtsfe33VhfCZQYVwmdY=",//15834b5b-0b1d-498c-b6bd-e78cbbf70bac
           "Expiration": null,
           "Type": "SharedSecret",
           "Created": new Date(),
@@ -353,7 +272,7 @@ if (collection.countDocuments({}) === 0) {
         "ProtocolType": "oidc",
         "ClientSecrets": [{
           "Description": null,
-          "Value": "5Nq4F8HXLzcn+uphP+BHZ5KaYymHDAfIxVmFw1Rn64g=",
+          "Value": "Qj0g99tQyzQ1TvQ9vIQ8s9E9ldZxuUgW1dFb6eML2XI=",//753b420c-5ff3-4e52-b902-13369b0e4fa1
           "Expiration": null,
           "Type": "SharedSecret",
           "Created": new Date(),
