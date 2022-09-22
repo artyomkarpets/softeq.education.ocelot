@@ -5,7 +5,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class GenderController : ControllerBase
+	public class GendersController : ControllerBase
 	{
 	}
 }

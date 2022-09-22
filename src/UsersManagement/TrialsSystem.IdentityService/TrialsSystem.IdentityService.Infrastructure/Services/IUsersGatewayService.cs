@@ -10,7 +10,7 @@ namespace TrialsSystem.IdentityService.Infrastructure.Services
     public interface IUsersGatewayService
     {
         Task CreateUser(CreateUserRequest userRequest);
-        Task<IEnumerable<IdNameDto>> GetCities();
+        Task<IEnumerable<IdNameDto>> GetCitiesAsync();
         Task<IEnumerable<IdNameDto>> GetGenders();
 
 

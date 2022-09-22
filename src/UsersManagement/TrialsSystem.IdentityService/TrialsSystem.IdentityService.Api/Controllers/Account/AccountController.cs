@@ -357,14 +357,13 @@ namespace TrialsSystem.IdentityService.Api.Controllers
 
 
             model.ReturnUrl = returnUrl;
-            model.Cities = new List<SelectListItem>
-            {
-                new()
+            model.Cities = (await _usersGatewayService.GetCitiesAsync())
+                .Select(x => new SelectListItem
                 {
-                    Value = "353644DA-BE6A-4BB4-AC85-D5B39FFD98E9",
-                    Text = "New York"
-                }
-            };
+                    Value = x.Id.ToString(),
+                    Text = x.Name
+
+                }).ToList();
             model.Genders = new List<SelectListItem>
             {
                 new()

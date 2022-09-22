@@ -9,11 +9,11 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class CityController : ControllerBase
+    public class CitiesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public CityController(IMediator mediator)
+        public CitiesController(IMediator mediator)
         {
             _mediator = mediator;
         }

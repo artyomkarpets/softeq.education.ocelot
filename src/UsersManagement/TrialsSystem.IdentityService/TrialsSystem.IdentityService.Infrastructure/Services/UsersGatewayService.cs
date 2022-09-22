@@ -33,9 +33,9 @@ namespace TrialsSystem.IdentityService.Infrastructure.Services
             }
         }
 
-        public async Task<IEnumerable<IdNameDto>> GetCities()
+        public async Task<IEnumerable<IdNameDto>> GetCitiesAsync()
         {
-            return new List<IdNameDto>();
+            return await _client.GetFromJsonAsync<List<IdNameDto>>(citiesUrl);
         }
 
         public async Task<IEnumerable<IdNameDto>> GetGenders()

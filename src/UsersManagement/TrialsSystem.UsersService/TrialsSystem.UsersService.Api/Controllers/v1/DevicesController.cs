@@ -14,11 +14,11 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
     [Route("api/v1/{userId}/[controller]")]
     [ServiceFilter(typeof(DeviceExceptionFilter))]
     [ApiController]
-    public class DeviceController : ControllerBase
+    public class DevicesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public DeviceController(IMediator mediator)
+        public DevicesController(IMediator mediator)
         {
             _mediator = mediator;
         }
