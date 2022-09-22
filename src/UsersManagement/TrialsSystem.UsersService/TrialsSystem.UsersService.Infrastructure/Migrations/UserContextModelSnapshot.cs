@@ -53,7 +53,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastModifiedDateDate")
+                    b.Property<DateTime>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Model")
@@ -100,7 +100,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastModifiedDateDate")
+                    b.Property<DateTime>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
@@ -115,9 +115,9 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"),
-                            CreatedDate = new DateTime(2022, 9, 22, 9, 30, 31, 633, DateTimeKind.Utc).AddTicks(7226),
+                            CreatedDate = new DateTime(2022, 9, 22, 10, 26, 27, 723, DateTimeKind.Utc).AddTicks(5013),
                             IsDeleted = false,
-                            LastModifiedDateDate = new DateTime(2022, 9, 22, 9, 30, 31, 633, DateTimeKind.Utc).AddTicks(7228),
+                            LastModifiedDateDate = new DateTime(2022, 9, 22, 10, 26, 27, 723, DateTimeKind.Utc).AddTicks(5016),
                             Name = "New York"
                         });
                 });
@@ -179,13 +179,14 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.Property<decimal?>("Height")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("IdentityId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("IdentityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastModifiedDateDate")
+                    b.Property<DateTime>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")

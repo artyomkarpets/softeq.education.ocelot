@@ -24,9 +24,9 @@ namespace TrialsSystem.IdentityService.Api.Controllers
 
         public DateTime BirthDate { get; set; } = DateTime.Now;
 
-        public Guid City { get; set; }
+        public Guid CityId { get; set; }
 
-        public Guid Gender { get; set; }
+        public Guid GenderId { get; set; }
 
         public string ReturnUrl { get; set; }
     }

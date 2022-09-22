@@ -14,6 +14,8 @@ using MongoDB.Driver;
 using TrialsSystem.IdentityService.Api.Attributes;
 using TrialsSystem.IdentityService.Api.Extensions;
 using TrialsSystem.IdentityService.Domain.AggregatesModel.ApplicationUserAggregate;
+using TrialsSystem.IdentityService.Infrastructure.Services;
+using TrialSystem.Shared.UsersService.Models;
 
 namespace TrialsSystem.IdentityService.Api.Controllers
 {
@@ -29,6 +31,7 @@ namespace TrialsSystem.IdentityService.Api.Controllers
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
         private readonly IMapper _mapper;
+        private readonly IUsersGatewayService _usersGatewayService;
 
 
         public AccountController(
@@ -38,6 +41,7 @@ namespace TrialsSystem.IdentityService.Api.Controllers
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
+            IUsersGatewayService usersGatewayService,
             IMapper mapper)
         {
             _userManager = userManager;
@@ -47,6 +51,7 @@ namespace TrialsSystem.IdentityService.Api.Controllers
             _schemeProvider = schemeProvider;
             _events = events;
             _mapper = mapper;
+            _usersGatewayService = usersGatewayService;
         }
 
         /// <summary>
@@ -181,12 +186,27 @@ namespace TrialsSystem.IdentityService.Api.Controllers
 
                 if (result.Succeeded)
                 {
-                    //TODO:Send user to userServices
+                    await _usersGatewayService.CreateUser(new CreateUserRequest
+                    {
+                        Email = model.Email,
+                        BirthDate = model.BirthDate,
+                        CityId = model.CityId,
+                        GenderId = model.GenderId,
+                        IdentityId = user.Id.ToString(),
+                        Surname = model.Surname,
+                        Name = model.Name
+                    });
 
                     user.EmailConfirmed = true; //Only for developments
                     await _userManager.UpdateAsync(user);
 
                     return RedirectToAction("Login", new { model.ReturnUrl });
+                }
+                else
+                {
+
+
+                    ModelState.AddModelError("Identity", result.Errors.ToString());
                 }
 
             }

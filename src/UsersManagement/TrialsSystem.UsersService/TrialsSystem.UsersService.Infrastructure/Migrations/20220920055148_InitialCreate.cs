@@ -130,7 +130,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cities",
-                columns: new[] { "Id", "CreatedDate", "IsDeleted", "LastModifiedDateDate", "Name" },
+                columns: new[] { "Id", "CreatedDate", "IsDeleted", "LastModifiedDate", "Name" },
                 values: new object[] { new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"), new DateTime(2022, 9, 20, 5, 51, 48, 82, DateTimeKind.Utc).AddTicks(3978), false, new DateTime(2022, 9, 20, 5, 51, 48, 82, DateTimeKind.Utc).AddTicks(3980), "New York" });
 
             migrationBuilder.InsertData(

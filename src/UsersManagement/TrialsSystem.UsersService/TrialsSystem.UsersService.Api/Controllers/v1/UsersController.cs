@@ -86,8 +86,6 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
                 request.Surname,
                 request.CityId,
                 request.BirthDate,
-                request.Weight,
-                request.Height,
                 request.GenderId,
                 request.IdentityId));
 

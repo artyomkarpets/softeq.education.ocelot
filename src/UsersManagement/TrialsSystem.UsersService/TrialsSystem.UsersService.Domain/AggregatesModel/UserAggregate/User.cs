@@ -6,7 +6,7 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
 {
     public class User : Entity
     {
-        public User(string email, string name, string surname, Guid cityId, Guid genderId, DateTime birthDate, Guid identityId)
+        public User(string email, string name, string surname, Guid cityId, Guid genderId, DateTime birthDate, string identityId)
         {
             Email = email;
             Name = name;
@@ -15,9 +15,11 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
             BirthDate = birthDate;
             GenderId = genderId;
             IdentityId = identityId;
+            CreatedDate = DateTime.UtcNow;
+            LastModifiedDate = DateTime.UtcNow;
         }
 
-        public Guid IdentityId { get; private set; }
+        public string IdentityId { get; private set; }
 
         public string Email { get; private set; }
 
@@ -45,11 +47,14 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
         public void SetWeight(decimal weight)
         {
             Weight = weight;
+            LastModifiedDate=DateTime.UtcNow;
         }
 
         public void SetHeight(decimal height)
         {
             Height = height;
+            LastModifiedDate = DateTime.UtcNow;
+
         }
 
     }

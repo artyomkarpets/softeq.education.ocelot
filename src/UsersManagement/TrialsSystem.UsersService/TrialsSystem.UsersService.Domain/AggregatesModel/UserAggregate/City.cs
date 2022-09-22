@@ -14,7 +14,7 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
         {
             Name = name;
             CreatedDate = DateTime.UtcNow;
-            LastModifiedDateDate = DateTime.UtcNow;
+            LastModifiedDate = DateTime.UtcNow;
             Id = id;
         }
 

@@ -17,15 +17,11 @@ namespace TrialSystem.Shared.UsersService.Models
 
         public DateTime BirthDate { get; set; }
 
-        public decimal? Weight { get; set; }
-
-        public decimal? Height { get; set; }
-
         public Guid CityId { get; set; }
 
         public Guid GenderId { get; set; }
 
-        public Guid IdentityId { get; set; }
+        public string IdentityId { get; set; }
 
     }
 }

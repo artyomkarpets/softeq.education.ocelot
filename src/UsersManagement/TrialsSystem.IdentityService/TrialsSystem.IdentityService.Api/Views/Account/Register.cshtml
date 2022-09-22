@@ -51,12 +51,12 @@
 
 						<div class="form-group">
 							<label asp-for="Cities"></label>
-							<select class="form-control" name="authorId" asp-items="Model.Cities"></select>
+							<select class="form-control" asp-for="CityId" asp-items="Model.Cities"></select>
 						</div>
 
 						<div class="form-group">
 							<label asp-for="Genders"></label>
-							<select class="form-control" name="authorId" asp-items="Model.Genders"></select>
+							<select class="form-control" asp-for="GenderId" asp-items="Model.Genders"></select>
 						</div>
 
 						<button class="btn btn-primary" name="button" value="register">Register</button>

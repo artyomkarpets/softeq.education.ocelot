@@ -10,18 +10,14 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
             string surname,
             Guid cityId,
             DateTime birthDate,
-            decimal? weight,
-            decimal? height,
             Guid genderId,
-            Guid identityId)
+            string identityId)
         {
             Email = email;
             Name = name;
             Surname = surname;
             CityId = cityId;
             BirthDate = birthDate;
-            Weight = weight;
-            Height = height;
             GenderId = genderId;
             IdentityId = identityId;
         }
@@ -35,14 +31,10 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
         public Guid CityId { get; }
 
         public DateTime BirthDate { get; }
-
-        public decimal? Weight { get; }
-
-        public decimal? Height { get; }
-
+        
         public Guid GenderId { get; }
 
-        public Guid IdentityId { get; }
+        public string IdentityId { get; }
 
 
 

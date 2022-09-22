@@ -34,7 +34,7 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.Base
 
         public DateTime CreatedDate { get; protected set; }
 
-        public DateTime LastModifiedDateDate { get; protected set; }
+        public DateTime LastModifiedDate { get; protected set; }
 
     }
 }
