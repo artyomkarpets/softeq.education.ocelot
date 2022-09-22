@@ -12,8 +12,8 @@ using TrialsSystem.UsersService.Infrastructure.Contexts;
 namespace TrialsSystem.UsersService.Infrastructure.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220922093031_AddIdentityIdToUsers")]
-    partial class AddIdentityIdToUsers
+    [Migration("20220922113626_InitDB")]
+    partial class InitDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,9 +118,9 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"),
-                            CreatedDate = new DateTime(2022, 9, 22, 9, 30, 31, 633, DateTimeKind.Utc).AddTicks(7226),
+                            CreatedDate = new DateTime(2022, 9, 22, 11, 36, 25, 871, DateTimeKind.Utc).AddTicks(6573),
                             IsDeleted = false,
-                            LastModifiedDateDate = new DateTime(2022, 9, 22, 9, 30, 31, 633, DateTimeKind.Utc).AddTicks(7228),
+                            LastModifiedDate = new DateTime(2022, 9, 22, 11, 36, 25, 871, DateTimeKind.Utc).AddTicks(6577),
                             Name = "New York"
                         });
                 });
@@ -182,8 +182,9 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     b.Property<decimal?>("Height")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("IdentityId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("IdentityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

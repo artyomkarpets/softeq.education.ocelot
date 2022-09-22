@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TrialsSystem.UsersService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     FirmwareVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,6 +75,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdentityId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -85,7 +86,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                     Height = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedDateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -131,7 +132,7 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Cities",
                 columns: new[] { "Id", "CreatedDate", "IsDeleted", "LastModifiedDate", "Name" },
-                values: new object[] { new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"), new DateTime(2022, 9, 20, 5, 51, 48, 82, DateTimeKind.Utc).AddTicks(3978), false, new DateTime(2022, 9, 20, 5, 51, 48, 82, DateTimeKind.Utc).AddTicks(3980), "New York" });
+                values: new object[] { new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"), new DateTime(2022, 9, 22, 11, 36, 25, 871, DateTimeKind.Utc).AddTicks(6573), false, new DateTime(2022, 9, 22, 11, 36, 25, 871, DateTimeKind.Utc).AddTicks(6577), "New York" });
 
             migrationBuilder.InsertData(
                 table: "Genders",

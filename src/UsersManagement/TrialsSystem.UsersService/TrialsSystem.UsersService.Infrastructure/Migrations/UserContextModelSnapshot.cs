@@ -115,9 +115,9 @@ namespace TrialsSystem.UsersService.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("353644da-be6a-4bb4-ac85-d5b39ffd98e9"),
-                            CreatedDate = new DateTime(2022, 9, 22, 10, 26, 27, 723, DateTimeKind.Utc).AddTicks(5013),
+                            CreatedDate = new DateTime(2022, 9, 22, 11, 36, 25, 871, DateTimeKind.Utc).AddTicks(6573),
                             IsDeleted = false,
-                            LastModifiedDateDate = new DateTime(2022, 9, 22, 10, 26, 27, 723, DateTimeKind.Utc).AddTicks(5016),
+                            LastModifiedDate = new DateTime(2022, 9, 22, 11, 36, 25, 871, DateTimeKind.Utc).AddTicks(6577),
                             Name = "New York"
                         });
                 });

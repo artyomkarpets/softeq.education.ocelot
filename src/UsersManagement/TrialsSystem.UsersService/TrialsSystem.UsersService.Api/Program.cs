@@ -73,10 +73,10 @@ namespace TrialsSystem.UsersService.Api
         private static void UsersServiceDAL(WebApplicationBuilder builder)
         {
             builder.Services.AddDbContext<UserContext>(options =>
-                //options.UseLazyLoadingProxies()
                 options.UseSqlServer(builder.Configuration.GetConnectionString("UserContextConnection")));
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ICityRepository, CityRepository>();
 
         }
     }
