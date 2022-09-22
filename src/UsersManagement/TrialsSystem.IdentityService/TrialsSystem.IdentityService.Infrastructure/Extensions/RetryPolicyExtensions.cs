@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrialsSystem.IdentityService.Infrastructure.Services
+namespace TrialsSystem.IdentityService.Infrastructure.Extensions
 {
-    public class UserTasksGatewayService : IUserTasksGatewayService
+    public static class RetryPolicyExtensions
     {
     }
 }

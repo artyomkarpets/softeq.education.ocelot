@@ -18,16 +18,11 @@ namespace TrialsSystem.IdentityService.Api.Controllers
         public string ConfirmPassword { get; set; }
 
 
-
         public string Name { get; set; }
 
         public string Surname { get; set; }
 
-        public DateTime BirthDate { get; set; }
-
-        public decimal? Weight { get; set; }
-
-        public decimal? Height { get; set; }
+        public DateTime BirthDate { get; set; } = DateTime.Now;
 
         public Guid City { get; set; }
 

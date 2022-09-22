@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using TrialsSystem.UsersService.Infrastructure.Models.DeviceDtos;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
 namespace TrialsSystem.UsersService.Api.Application.Commands.DeviceCommands
 {
-    public class CreateDeviceCommand : IRequest<CreateUserResponse>
+    public class CreateDeviceCommand : IRequest<DeviceResponse>
     {
         public CreateDeviceCommand(string serialNumber,
             string model,

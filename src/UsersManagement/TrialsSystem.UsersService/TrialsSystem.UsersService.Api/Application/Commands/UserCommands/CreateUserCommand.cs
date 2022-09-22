@@ -3,7 +3,7 @@ using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
 namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
 {
-    public class CreateUserCommand : IRequest<CreateUserResponse>
+    public class CreateUserCommand : IRequest<Guid>
     {
         public CreateUserCommand(string email,
             string name,
@@ -13,7 +13,7 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
             decimal? weight,
             decimal? height,
             Guid genderId,
-            string userId)
+            Guid identityId)
         {
             Email = email;
             Name = name;
@@ -23,6 +23,7 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
             Weight = weight;
             Height = height;
             GenderId = genderId;
+            IdentityId = identityId;
         }
 
         public string Email { get; }
@@ -40,6 +41,9 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
         public decimal? Height { get; }
 
         public Guid GenderId { get; }
+
+        public Guid IdentityId { get; }
+
 
 
     }

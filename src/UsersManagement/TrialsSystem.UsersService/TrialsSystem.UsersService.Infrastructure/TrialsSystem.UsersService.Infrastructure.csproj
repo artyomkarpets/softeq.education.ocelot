@@ -27,4 +27,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\TrialSystem.Shared.UsersService.Models\TrialSystem.Shared.UsersService.Models.csproj" />
+    <ProjectReference Include="..\TrialsSystem.UsersService.Domain\TrialsSystem.UsersService.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

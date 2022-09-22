@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
+using TrialSystem.Shared.UsersService.Models;
 
 namespace TrialsSystem.UsersService.Api.Application.Validation
 {

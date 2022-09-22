@@ -45,13 +45,8 @@
 						</div>
 
 						<div class="form-group">
-							<label asp-for="Weight"></label>
-							<input class="form-control" type="number" placeholder="Weight" asp-for="Weight" autofocus>
-						</div>
-
-						<div class="form-group">
-							<label asp-for="Height"></label>
-							<input class="form-control" type="number" placeholder="Height " asp-for="Height" autofocus>
+							<label asp-for="BirthDate"></label>
+							<input class="form-control" type="date" placeholder="Username" asp-for="BirthDate" autofocus>
 						</div>
 
 						<div class="form-group">
@@ -60,12 +55,12 @@
 						</div>
 
 						<div class="form-group">
-							<label asp-for="Cities"></label>
+							<label asp-for="Genders"></label>
 							<select class="form-control" name="authorId" asp-items="Model.Genders"></select>
 						</div>
 
 						<button class="btn btn-primary" name="button" value="register">Register</button>
-						<button class="btn btn-secondary" name="button" value="cancel">Cancel</button>
+						<a href="@Model.ReturnUrl" class="btn btn-secondary" value="cancel">Cancel</a>
 					</form>
 				</div>
 			</div>

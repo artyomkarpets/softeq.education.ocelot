@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
+namespace TrialSystem.Shared.UsersService.Models
 {
     public class CreateUserRequest
     {
@@ -24,6 +24,8 @@ namespace TrialsSystem.UsersService.Infrastructure.Models.UserDTOs
         public Guid CityId { get; set; }
 
         public Guid GenderId { get; set; }
+
+        public Guid IdentityId { get; set; }
 
     }
 }

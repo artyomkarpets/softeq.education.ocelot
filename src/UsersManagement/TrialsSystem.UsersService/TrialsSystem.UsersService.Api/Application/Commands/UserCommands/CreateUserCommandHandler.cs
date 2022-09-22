@@ -6,7 +6,7 @@ using TrialsSystem.UsersService.Infrastructure.Models.UserDTOs;
 
 namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, CreateUserResponse>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Guid>
     {
         private readonly IUserRepository _repository;
         private readonly IMapper _mapper;
@@ -16,14 +16,14 @@ namespace TrialsSystem.UsersService.Api.Application.Commands.UserCommands
             _mapper = mapper;
         }
 
-        public async Task<CreateUserResponse> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var user
                 = await _repository.CreateAsync(
                    new User(request.Email, request.Name, request.Surname, request.CityId, request.GenderId,
-                   request.BirthDate));
+                   request.BirthDate, request.IdentityId));
 
-            return _mapper.Map<CreateUserResponse>(user);
+            return user.Id;
         }
     }
 }

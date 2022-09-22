@@ -5,6 +5,8 @@ using TrialsSystem.UsersService.Api.Application.Commands;
 using TrialsSystem.UsersService.Api.Application.Commands.UserCommands;
 using TrialsSystem.UsersService.Api.Application.Queries.UserQueries;
 using TrialsSystem.UsersService.Api.Filters;
+using TrialSystem.Shared.UsersService.Models;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 namespace TrialsSystem.UsersService.Api.Controllers.v1
 {
@@ -17,10 +19,11 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public UsersController(IMediator mediator)
+        private readonly IUrlHelperFactory _factory;
+        public UsersController(IMediator mediator, IUrlHelperFactory factory)
         {
             _mediator = mediator;
+            _factory = factory;
         }
 
         /// <summary>
@@ -71,12 +74,12 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         /// </summary>
         /// <param name="request">CreateAsync user request model</param>
         /// <returns></returns>
-        [HttpPost]
-        [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
+        [HttpPost("/api/v1/[controller]")]
+        [ProducesResponseType(typeof(UpdateUserResponse), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PostAsync([FromRoute] string userId, CreateUserRequest request)
+        public async Task<IActionResult> PostAsync(CreateUserRequest request)
         {
-            var response = await _mediator.Send(new
+            var id = await _mediator.Send(new
                 CreateUserCommand(
                 request.Email,
                 request.Name,
@@ -86,9 +89,11 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
                 request.Weight,
                 request.Height,
                 request.GenderId,
-                userId));
+                request.IdentityId));
 
-            return Ok(response);
+            var helper = _factory.GetUrlHelper(ControllerContext);
+            var uri = helper.Action("Get", new { userId = id, id });
+            return Created(uri, null);
 
         }
 

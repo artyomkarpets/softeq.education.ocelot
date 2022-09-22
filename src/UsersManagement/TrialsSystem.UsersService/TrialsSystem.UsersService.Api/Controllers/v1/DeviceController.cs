@@ -69,7 +69,7 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
         /// <param name="request">CreateAsync user request model</param>
         /// <returns></returns>
         [HttpPost]
-        [ProducesResponseType(typeof(CreateUserResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(DeviceResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PostAsync([FromRoute] string userId, CreateDeviceRequest request)
         {

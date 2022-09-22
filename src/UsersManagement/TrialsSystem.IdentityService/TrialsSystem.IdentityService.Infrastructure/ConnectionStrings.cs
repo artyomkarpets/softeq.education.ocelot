@@ -10,5 +10,8 @@ namespace TrialsSystem.IdentityService.Infrastructure
     {
         public static string IdentityDatabase = nameof(IdentityDatabase);
         public const string Issuer = nameof(Issuer);
+        public const string UsersService = nameof(UsersService);
+        public const string UserTasksService = nameof(UserTasksService);
+
     }
 }

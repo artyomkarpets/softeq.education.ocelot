@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrialsSystem.IdentityService.Infrastructure.Services
 {
-    public class UserTasksGatewayService : IUserTasksGatewayService
+    public interface IUserTasksGatewayService
     {
     }
 }

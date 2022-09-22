@@ -6,15 +6,18 @@ namespace TrialsSystem.UsersService.Domain.AggregatesModel.UserAggregate
 {
     public class User : Entity
     {
-        public User(string email, string name, string surname, Guid cityId, Guid genderId, DateTime birthDate)
+        public User(string email, string name, string surname, Guid cityId, Guid genderId, DateTime birthDate, Guid identityId)
         {
             Email = email;
             Name = name;
             Surname = surname;
             CityId = cityId;
-            BirthDate = BirthDate;
+            BirthDate = birthDate;
             GenderId = genderId;
+            IdentityId = identityId;
         }
+
+        public Guid IdentityId { get; private set; }
 
         public string Email { get; private set; }
 

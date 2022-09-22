@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrialsSystem.UsersService.Infrastructure.Models.BaseDtos
+namespace TrialSystem.Shared.UsersService.Models
 {
     public class IdNameDto
     {
