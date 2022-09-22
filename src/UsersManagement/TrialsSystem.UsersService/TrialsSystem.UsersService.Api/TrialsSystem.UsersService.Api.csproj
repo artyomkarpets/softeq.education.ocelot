@@ -27,4 +27,9 @@
     <ProjectReference Include="..\TrialsSystem.UsersService.Infrastructure\TrialsSystem.UsersService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Queries\CityQueries\" />
+    <Folder Include="Application\Queries\GenderQueries\" />
+  </ItemGroup>
+
 </Project>
