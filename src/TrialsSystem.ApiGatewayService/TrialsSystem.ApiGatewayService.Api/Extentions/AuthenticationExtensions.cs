@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace TrialsSystem.IdentityService.Api.Extensions
+namespace TrialsSystem.ApiGatewayService.Api.Extentions
 {
     public static class AuthenticationExtensions
     {
@@ -11,13 +13,17 @@ namespace TrialsSystem.IdentityService.Api.Extensions
             // accepts any access token issued by identity server
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddCookie(cfg => cfg.SlidingExpiration = true)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
+                    options.Authority = configuration.GetConnectionString("TokenAuthority");
+                    options.RequireHttpsMetadata = false;
                     options.RequireHttpsMetadata = false;
                     options.SaveToken = true;
-
+       
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
+                        //todo: update it for production
                         ValidateAudience = false,
                         ValidateIssuer = false,
                         AuthenticationType = "at+jwt",
@@ -26,7 +32,11 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                 });
 
 
-          //  services.AddSingleton<IConfigureOptions<JwtBearerOptions>, ConfigureJwtBearerOptions>();
+            var multiSchemePolicy = new AuthorizationPolicyBuilder(
+                                        CookieAuthenticationDefaults.AuthenticationScheme,
+                                        JwtBearerDefaults.AuthenticationScheme)
+                                      .RequireAuthenticatedUser()
+                                      .Build();
 
             // adds an authorization policy to make sure the token is for scope 'identity'
             services.AddAuthorization(options =>
@@ -35,19 +45,19 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                 {
                     builder.RequireClaim("scope", "identity");
                 });
-                options.AddPolicy("AllowAnonymousAndAuthorized", builder =>
-                {
-                    builder.RequireAssertion(context => context.User.HasClaim(claim => claim.Type == "scope" && claim.Value == "identity") ||
-                                                        context.User.Identity.IsAuthenticated);
-                });
+
                 options.AddPolicy("AuthorizedUser", builder =>
                 {
                     builder.RequireAuthenticatedUser();
+                    builder.RequireClaim("scope", "trial");
                 });
+
+                options.DefaultPolicy = multiSchemePolicy;
             });
 
             return services;
         }
+
         public static IServiceCollection AddTSCors(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddCors(options =>

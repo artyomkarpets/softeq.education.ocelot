@@ -1,8 +1,8 @@
 var userProfile = {
-    "Type": "userProfile",//uniq for now
+    "Type": "UserProfile",//uniq for now
     "Version": 1,
     "CreatedDateTime": new Date(),
-    "Period:":"initial", //initial, dayly, monthly, weekly, last - get from questionnaire service
+    "Period:": "initial", //initial, dayly, monthly, weekly, last - get from questionnaire service
     "Title": [{
         "Local": "en-en",
         "Text": "User Profile"
@@ -15,8 +15,8 @@ var userProfile = {
     "Description": [],//If necessary additional description
     "Questions": [
         {
-            "Name": "weight",
-            "QuestionType": "Number",//freeText, number, singleSelect,multiSelect,readonly
+            "Name": "Weight",
+            "QuestionType": "Number",//FreeText, Number, SingleSelect,MultiSelect,Readonly
             "DataType": "int",//int, string
             "DefaultValue": "0",
             "ContentUrl:": null,//relative url to cms
@@ -45,17 +45,17 @@ var userProfile = {
             }]
         },
         {
-            "Name": "height",
+            "Name": "Height",
             "QuestionType": "Number",
             "DataType": "int",
             "DefaultValue": "0",
             "Title": [{
                 "Local": "en-en",
-                "Text": "Weight:"
+                "Text": "Your height:"
             },
             {
                 "Local": "ru-ru",
-                "Text": "Масса"
+                "Text": "Ваш рост"
             }
             ],
             "Description": [{
@@ -68,13 +68,13 @@ var userProfile = {
             }
             ],
             "Validations": [{
-                "Rule": "minValue",//maxValue,Requared
+                "Rule": "MinValue",//MaxValue,Requared
                 "Value": "0"
             }]
         },
         {
             "Name": "devices",
-            "QuestionType": "readonly",
+            "QuestionType": "Readonly",
             "DataType": "string",
             "DefaultValue": "0",
             "Title": [{
@@ -89,6 +89,144 @@ var userProfile = {
             "Description": [
             ],
             "Validations": []
+        },
+        {
+            "Name": "DoYouSmoke",
+            "QuestionType": "SingleSelect",
+            "DataType": "string",
+            "DefaultValue": null,
+            "Title": [{
+                "Local": "en-en",
+                "Text": "Do you smoke? :"
+            },
+            {
+                "Local": "ru-ru",
+                "Text": "Курите ли вы?"
+            }
+            ],
+            "Description": [
+            ],
+            "Validations": [],
+            "Answers": [
+                {
+                    "Name": "Yes",
+                    "RelatedTask":"Smoking",
+                    "Value": [
+                        {
+                            "Local": "en-en",
+                            "Text": "Yes"
+                        },
+                        {
+                            "Local": "ru-ru",
+                            "Text": "Да"
+                        }
+                    ],
+                },
+                {
+                    "Name": "No",
+                    "Value": [
+                        {
+                            "Local": "en-en",
+                            "Text": "No"
+                        },
+                        {
+                            "Local": "ru-ru",
+                            "Text": "Нет"
+                        }
+                    ],
+                }]
+        },
+        {
+            "Name": "DrinkCofee",
+            "QuestionType": "SingleSelect",
+            "DataType": "string",
+            "DefaultValue": null,
+            "Title": [{
+                "Local": "en-en",
+                "Text": "Do you drink coffee? :"
+            },
+            {
+                "Local": "ru-ru",
+                "Text": "Вы пьете кофе??"
+            }
+            ],
+            "Description": [
+            ],
+            "Validations": [],
+            "Answers": [
+                {
+                    "Name": "Yes",
+                    "RelatedQuestionnaire":"DrinkingCoffee",
+                    "Value": [
+                        {
+                            "Local": "en-en",
+                            "Text": "Yes"
+                        },
+                        {
+                            "Local": "ru-ru",
+                            "Text": "Да"
+                        }
+                    ],
+                },
+                {
+                    "Name": "No",
+                    "Value": [
+                        {
+                            "Local": "en-en",
+                            "Text": "No"
+                        },
+                        {
+                            "Local": "ru-ru",
+                            "Text": "Нет"
+                        }
+                    ],
+                }]
+        },
+        {
+            "Name": "DrinkAlcohol",
+            "QuestionType": "SingleSelect",
+            "DataType": "string",
+            "DefaultValue": null,
+            "Title": [{
+                "Local": "en-en",
+                "Text": "Do you drink alcohol? :"
+            },
+            {
+                "Local": "ru-ru",
+                "Text": "Вы употребляете алкаголь?"
+            }
+            ],
+            "Description": [
+            ],
+            "Validations": [],
+            "Answers": [
+                {
+                    "Name": "Yes",
+                    "RelatedQuestionnaire":"DrinkingAlcohol",
+                    "Value": [
+                        {
+                            "Local": "en-en",
+                            "Text": "Yes"
+                        },
+                        {
+                            "Local": "ru-ru",
+                            "Text": "Да"
+                        }
+                    ],
+                },
+                {
+                    "Name": "No",
+                    "Value": [
+                        {
+                            "Local": "en-en",
+                            "Text": "No"
+                        },
+                        {
+                            "Local": "ru-ru",
+                            "Text": "Нет"
+                        }
+                    ],
+                }]
         },
     ]
 }

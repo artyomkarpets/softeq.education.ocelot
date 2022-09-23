@@ -109,7 +109,7 @@ if (collection.countDocuments({}) === 0) {
         "BackChannelLogoutSessionRequired": true,
         "AllowOfflineAccess": true,
         "AllowedScopes": [
-          "treatment",
+          "trial",
           "identity",
           "openid"
         ],
@@ -300,7 +300,7 @@ if (collection.countDocuments({}) === 0) {
         "BackChannelLogoutSessionRequired": true,
         "AllowOfflineAccess": true,
         "AllowedScopes": [
-          "treatment",
+          "trial",
           "identity",
           "openid"
         ],

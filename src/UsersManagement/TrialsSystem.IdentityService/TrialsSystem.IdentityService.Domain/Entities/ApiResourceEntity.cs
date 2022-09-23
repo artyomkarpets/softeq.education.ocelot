@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TrialsSystem.IdentityService.Domain.Entities
 {
-    public class ApiResourceEntity
+    public class ApiResourceEntity : Entity
     {
         public bool Enabled { get; set; } = true;
         public string Name { get; set; }

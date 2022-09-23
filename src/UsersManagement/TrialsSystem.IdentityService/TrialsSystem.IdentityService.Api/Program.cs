@@ -8,18 +8,15 @@ using TrialsSystem.IdentityService.Infrastructure.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllersWithViews();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 builder.Services
     .AddTSIdentity(builder.Configuration)
     .AddTSIdentityServer(builder.Configuration)
     .AddInkaIdentityPasswordPolicy()
     .AddTSAuthentication(builder.Configuration)
     .AddTSCors(builder.Configuration);
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddSwaggerGen();
 
 builder.Services.AddHttpClient<IUsersGatewayService, UsersGatewayService>(httpClient =>
 {
@@ -32,7 +29,6 @@ builder.Services.AddHttpClient<IUserTasksGatewayService, UserTasksGatewayService
     httpClient.BaseAddress = new Uri(builder.Configuration.GetConnectionString(ConnectionStrings.UserTasksService));
 
 });
-
 
 builder.Services.AddAutoMapper(mc => mc.AddProfile(new MappingProfile()));
 
@@ -52,6 +48,8 @@ app.UseRouting();
 
 app.UseCors();
 app.UseIdentityServer();
+
+
 app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
 
 app.UseAuthentication();

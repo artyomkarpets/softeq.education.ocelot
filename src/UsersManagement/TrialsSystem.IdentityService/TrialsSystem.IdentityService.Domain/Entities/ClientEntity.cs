@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TrialsSystem.IdentityService.Domain.Entities
 {
-    public class ClientEntity
+    public class ClientEntity : Entity
     {
         public bool Enabled { get; set; } = true;
         public string ClientId { get; set; }

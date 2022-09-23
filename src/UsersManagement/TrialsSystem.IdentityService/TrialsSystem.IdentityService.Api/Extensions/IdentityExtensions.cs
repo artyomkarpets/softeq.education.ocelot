@@ -74,8 +74,8 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                 .AddPersistedGrantStore<PersistedGrantStore>()
                 .AddDeviceFlowStore<DeviceFlowStore>()
                 .AddAspNetIdentity<ApplicationUser>()
-                .AddDeveloperSigningCredential()
-                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator<ApplicationUser>>();
+                .AddDeveloperSigningCredential();
+                //.AddResourceOwnerValidator<ResourceOwnerPasswordValidator<ApplicationUser>>();
 
             services.ConfigureApplicationCookie(config =>
             {
