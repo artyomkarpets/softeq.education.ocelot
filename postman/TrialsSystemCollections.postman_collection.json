@@ -7,6 +7,189 @@
 	},
 	"item": [
 		{
+			"name": "Identity",
+			"item": [
+				{
+					"name": "Authorization",
+					"item": [
+						{
+							"name": "Get anonymous token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "{{clientId_anonimus}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{clientSecret_anonimus}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "identity",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{identity-url}}/connect/token",
+									"host": [
+										"{{identity-url}}"
+									],
+									"path": [
+										"connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get tocken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseJson = pm.response.json();\r",
+											"pm.environment.set(\"refresh_token\", responseJson.refresh_token);\r",
+											"pm.environment.set(\"access_token\", responseJson.access_token);\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "{{clientid}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{ClientSecret}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "kapec.art@yandex.ru",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "P@ssw0rd",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "trial openid offline_access",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{identity-url}}/connect/token",
+									"host": [
+										"{{identity-url}}"
+									],
+									"path": [
+										"connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user info",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{identity-url}}/connect/userinfo",
+									"host": [
+										"{{identity-url}}"
+									],
+									"path": [
+										"connect",
+										"userinfo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TestData",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{identity-url}}/api/v1/accounts",
+									"host": [
+										"{{identity-url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "UserManagment",
 			"item": [
 				{
@@ -36,7 +219,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"surname\": \"{{$randomLastName}}\",\r\n  \"birthDate\": \"1991-02-25\",\r\n  \"weight\": null,\r\n  \"height\": null,\r\n  \"cityId\": \"38955a97-394e-4341-8cde-b1921e151c09\"\r\n}",
+							"raw": "{\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"name\": \"{{$randomFirstName}}\",\r\n  \"surname\": \"{{$randomLastName}}\",\r\n  \"birthDate\": \"2000-01-20\",\r\n  \"weight\": null,\r\n  \"height\": null,\r\n  \"cityId\": \"353644DA-BE6A-4BB4-AC85-D5B39FFD98E9\",\r\n  \"genderId\":\"C7166A6D-3AAA-4B99-A9D3-9A5294A78CFC\",\r\n  \"identityId\":\"{{$guid}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,15 +227,121 @@
 							}
 						},
 						"url": {
-							"raw": "{{users-url}}/api/v1/98a5eb3c-4365-403f-9c26-f5cdb8508fc2/Users",
+							"raw": "{{users-url}}/api/v1/Users",
 							"host": [
 								"{{users-url}}"
 							],
 							"path": [
 								"api",
 								"v1",
-								"98a5eb3c-4365-403f-9c26-f5cdb8508fc2",
 								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get cities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users-url}}/api/v1/Cities",
+							"host": [
+								"{{users-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"Cities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserTasks",
+			"item": [
+				{
+					"name": "Create task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Task1\",\r\n  \"userId\": \"98a5eb3c-4365-403f-9c26-f5cdb8508fc2\",\r\n  \"additionalProperties\": {\r\n    \"taskType\": \"123\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{usertasks-url}}/api/v1/98a5eb3c-4365-403f-9c26-f5cdb8508fc2/usertask",
+							"host": [
+								"{{usertasks-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"98a5eb3c-4365-403f-9c26-f5cdb8508fc2",
+								"usertask"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Task1\",\r\n  \"userId\": \"98a5eb3c-4365-403f-9c26-f5cdb8508fc2\",\r\n  \"additionalProperties\": {\r\n    \"taskType\": \"rty\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{usertasks-url}}/api/v1/98a5eb3c-4365-403f-9c26-f5cdb8508fc2/usertask",
+							"host": [
+								"{{usertasks-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"98a5eb3c-4365-403f-9c26-f5cdb8508fc2",
+								"usertask"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GatewayService",
+			"item": [
+				{
+					"name": "Forecast",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7060/WeatherForecast/GetAnonimus",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7060",
+							"path": [
+								"WeatherForecast",
+								"GetAnonimus"
 							]
 						}
 					},
