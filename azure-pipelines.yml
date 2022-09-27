@@ -26,7 +26,7 @@ stages:
       displayName: "restore"
       inputs:
         command: 'restore'
-        projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
+        projects: '$(Build.SourcesDirectory)/src/Shared/.././*.csproj'
         feedsToUse: 'select'
     - task: DotNetCoreCLI@2
       displayName: "build"
@@ -49,7 +49,7 @@ stages:
       displayName: 'NuGet push'
       inputs:
         command: push
-        publishVstsFeed: 'Softeq.Lernong.TrialSystem/TS_Nuget'
+        publishVstsFeed: 'Softeq.Education.TrialsSystem/TS_Nuget'
         allowPackageConflicts: true
         
 
