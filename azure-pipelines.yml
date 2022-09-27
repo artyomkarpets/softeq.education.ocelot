@@ -1,0 +1,73 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- main
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+  Major: '1'
+  Minor: '0'
+  Patch: '0'
+
+stages:
+- stage: NugetPublish
+  displayName: Build image
+
+  jobs:
+  - job:  NugetMongoConfigurationsBuild
+    displayName: Nuget Build
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: "restore"
+      inputs:
+        command: 'restore'
+        projects: '$(Build.SourcesDirectory)/src/Shared/**/*.csproj'
+        feedsToUse: 'select'
+    - task: DotNetCoreCLI@2
+      displayName: "build"
+      inputs:
+        command: 'build'
+        projects: '$(Build.SourcesDirectory)/src/Shared/**/*.csproj'
+    - task: NuGetCommand@2
+      displayName: "pack MongoConfigurations"
+      inputs:
+        command: pack
+        packagesToPack: '**/TrialSystem.Shared.MongoConfigurations.csproj'
+        versioningScheme: byPrereleaseNumber
+        majorVersion: '$(Major)'
+        minorVersion: '$(Minor)'
+        patchVersion: '$(Patch)'
+    - task: NuGetAuthenticate@0
+      displayName: 'NuGet Authenticate'
+    - task: NuGetCommand@2
+      displayName: 'NuGet push MongoConfigurations'
+      inputs:
+        command: push
+        publishVstsFeed: 'Softeq.Education.TrialsSystem/TS_Nuget'
+        allowPackageConflicts: true
+
+    - task: NuGetCommand@2
+      displayName: "pack UsersService.Models"
+      inputs:
+        command: pack
+        packagesToPack: '**/TrialSystem.Shared.UsersService.Models.csproj'
+        versioningScheme: byPrereleaseNumber
+        majorVersion: '$(Major)'
+        minorVersion: '$(Minor)'
+        patchVersion: '$(Patch)'
+    - task: NuGetAuthenticate@0
+      displayName: 'NuGet Authenticate'
+    - task: NuGetCommand@2
+      displayName: 'NuGet push UsersService.Models'
+      inputs:
+        command: push
+        publishVstsFeed: 'Softeq.Education.TrialsSystem/TS_Nuget'
+        allowPackageConflicts: true
+
+
+
