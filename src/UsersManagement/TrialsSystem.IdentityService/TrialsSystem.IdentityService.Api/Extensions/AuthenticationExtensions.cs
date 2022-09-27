@@ -13,6 +13,7 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
+                    options.Authority = configuration.GetConnectionString("Authority");
                     options.RequireHttpsMetadata = false;
                     options.SaveToken = true;
 
@@ -26,7 +27,7 @@ namespace TrialsSystem.IdentityService.Api.Extensions
                 });
 
 
-          //  services.AddSingleton<IConfigureOptions<JwtBearerOptions>, ConfigureJwtBearerOptions>();
+            //  services.AddSingleton<IConfigureOptions<JwtBearerOptions>, ConfigureJwtBearerOptions>();
 
             // adds an authorization policy to make sure the token is for scope 'identity'
             services.AddAuthorization(options =>

@@ -31,8 +31,9 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__IdentityDatabase=mongodb://mongo/TS_IdentityServer
       - ConnectionStrings__Issuer=http://localhost:4102
-      - ConnectionStrings__UsersService=http://localhost:4101
-      - ConnectionStrings__UserTasksService=http://localhost:4102
+      - ConnectionStrings__Authority=http://localhost:4102
+      - ConnectionStrings__UsersService=http://um.users.service
+      - ConnectionStrings__UserTasksService=http://um.usertasks.service
     ports:
       - 4102:80
 
