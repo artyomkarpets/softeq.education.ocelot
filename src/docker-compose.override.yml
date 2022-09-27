@@ -21,6 +21,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__UserContextConnection=Server=sqlserver;Database=TS_Users;User Id=sa;Password=Pass@word;Integrated Security=true;Encrypt=False;Trusted_Connection=False
     ports:
       - 4101:80
   
@@ -28,6 +29,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__IdentityDatabase=mongodb://mongo/TS_IdentityServer
+      - ConnectionStrings__Issuer=http://localhost:4102
+      - ConnectionStrings__UsersService=http://localhost:4101
+      - ConnectionStrings__UserTasksService=http://localhost:4102
     ports:
       - 4102:80
 
@@ -35,9 +40,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__Issuer=http://localhost:4102
-      - ConnectionStrings__UsersService=http://localhost:4101
-      - ConnectionStrings__UserTasksService=http://localhost:4102
+      - ConnectionStrings__UserTasksDatabase=mongodb://mongo/TS_UserTasks
     ports:
       - 4103:80
 
