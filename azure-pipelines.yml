@@ -32,9 +32,9 @@ stages:
       displayName: "build"
       inputs:
         command: 'build'
-        projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
+        projects: '$(Build.SourcesDirectory)/src/Shared/**/*.csproj'
     - task: NuGetCommand@2
-      displayName: "pack"
+      displayName: "pack MongoConfigurations"
       inputs:
         command: pack
         packagesToPack: '**/TrialSystem.Shared.MongoConfigurations.csproj'
@@ -45,33 +45,17 @@ stages:
     - task: NuGetAuthenticate@0
       displayName: 'NuGet Authenticate'
     - task: NuGetCommand@2
-      displayName: 'NuGet push'
+      displayName: 'NuGet push MongoConfigurations'
       inputs:
         command: push
         publishVstsFeed: 'Softeq.Education.TrialsSystem/TS_Nuget'
         allowPackageConflicts: true
-        
-        
-  - job:  NugetUsersServiceModelsBuild
-    displayName: Nuget Build
-    steps:
-    - task: DotNetCoreCLI@2
-      displayName: "restore"
-      inputs:
-        command: 'restore'
-        projects: '$(Build.SourcesDirectory)/src/Shared/../*.csproj'
-        feedsToUse: 'select'
-    - task: DotNetCoreCLI@2
-      displayName: "build"
-      inputs:
-        command: 'build'
-        projects: '$(Build.SourcesDirectory)/src/Shared/TrialSystem.Shared.MongoConfigurations/TrialSystem.Shared.MongoConfigurations.csproj'
-  
+
     - task: NuGetCommand@2
-      displayName: "pack"
+      displayName: "pack UsersService.Models"
       inputs:
         command: pack
-        packagesToPack: '**/TrialSystem.Shared.MongoConfigurations.csproj'
+        packagesToPack: '**/TrialSystem.Shared.UsersService.Models.csproj'
         versioningScheme: byPrereleaseNumber
         majorVersion: '$(Major)'
         minorVersion: '$(Minor)'
@@ -79,10 +63,11 @@ stages:
     - task: NuGetAuthenticate@0
       displayName: 'NuGet Authenticate'
     - task: NuGetCommand@2
-      displayName: 'NuGet push'
+      displayName: 'NuGet push UsersService.Models'
       inputs:
         command: push
         publishVstsFeed: 'Softeq.Education.TrialsSystem/TS_Nuget'
         allowPackageConflicts: true
+
 
 
