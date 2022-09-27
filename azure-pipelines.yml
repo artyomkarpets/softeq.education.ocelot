@@ -26,7 +26,7 @@ stages:
       displayName: "restore"
       inputs:
         command: 'restore'
-        projects: '$(Build.SourcesDirectory)/src/Shared/../*.csproj'
+        projects: '$(Build.SourcesDirectory)/src/Shared/**/*.csproj'
         feedsToUse: 'select'
     - task: DotNetCoreCLI@2
       displayName: "build"
