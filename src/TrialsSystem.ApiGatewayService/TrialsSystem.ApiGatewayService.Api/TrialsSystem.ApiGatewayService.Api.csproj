@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="TrialSystem.Shared.MongoConfigurations" Version="1.0.0-CI-20220927-071925" />
   </ItemGroup>
 
 </Project>

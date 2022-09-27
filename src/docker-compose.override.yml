@@ -23,3 +23,27 @@ services:
       - ASPNETCORE_URLS=http://+:80
     ports:
       - 4101:80
+  
+  um.identity.service:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 4102:80
+
+  um.usertasks.service:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__Issuer=http://localhost:4102
+      - ConnectionStrings__UsersService=http://localhost:4101
+      - ConnectionStrings__UserTasksService=http://localhost:4102
+    ports:
+      - 4103:80
+
+  bs.apigateway.service:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - 4104:80

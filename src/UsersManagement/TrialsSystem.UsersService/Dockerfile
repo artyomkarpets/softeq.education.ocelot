@@ -3,6 +3,8 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 
+
+ARG TOKEN
 WORKDIR /src
 
 COPY ["UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Api/TrialsSystem.UsersService.Api.csproj", "UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Api/"]
@@ -10,7 +12,7 @@ COPY ["UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Domai
 COPY ["UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Infrastructure/TrialsSystem.UsersService.Infrastructure.csproj", "UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Infrastructure/"]
 COPY ["UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Tests/TrialsSystem.UsersService.Tests.csproj", "UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.Tests/"]
 COPY ["UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.sln", "UsersManagement/TrialsSystem.UsersService/"]
-
+COPY ["UsersManagement/TrialsSystem.UsersService/nuget.config", "UsersManagement/TrialsSystem.UsersService/"]
 
 RUN dotnet restore "UsersManagement/TrialsSystem.UsersService/TrialsSystem.UsersService.sln"
 COPY . .

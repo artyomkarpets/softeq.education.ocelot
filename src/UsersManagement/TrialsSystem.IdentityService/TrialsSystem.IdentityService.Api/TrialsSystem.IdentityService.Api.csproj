@@ -20,10 +20,10 @@
     <PackageReference Include="MongoDB.Driver" Version="2.17.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
+    <PackageReference Include="TrialSystem.Shared.MongoConfigurations" Version="1.0.0-CI-20220927-071925" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\TrialSystem.Shared.MongoConfigurations\TrialSystem.Shared.MongoConfigurations.csproj" />
     <ProjectReference Include="..\TrialsSystem.IdentityService.Domain\TrialsSystem.IdentityService.Domain.csproj" />
     <ProjectReference Include="..\TrialsSystem.IdentityService.Infrastructure\TrialsSystem.IdentityService.Infrastructure.csproj" />
   </ItemGroup>

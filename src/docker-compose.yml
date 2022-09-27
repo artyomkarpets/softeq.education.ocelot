@@ -6,7 +6,7 @@ services:
     container_name: mongo
     volumes:
       - /data/mongodb:/data/mongodb
-  
+
   sqlserver:
     container_name: sql-server-db
     image: mcr.microsoft.com/mssql/server:2017-latest
@@ -18,8 +18,7 @@ services:
     container_name: redis
     volumes:
       - /data/redis:/data
-  
-    
+
   um.users.service:
     image: um.users.service
     container_name: um.users.service
@@ -27,4 +26,31 @@ services:
       context: .
       dockerfile: UsersManagement/TrialsSystem.UsersService/Dockerfile
     depends_on:
+      - sqlserver
+
+  um.identity.service:
+    image: um.identity.service
+    container_name: um.identity.service
+    build:
+      context: .
+      dockerfile: UsersManagement/TrialsSystem.IdentityService/Dockerfile
+    depends_on:
       - mongo
+
+  um.usertasks.service:
+    image: um.usertasks.service
+    container_name: um.usertasks.service
+    build:
+      context: .
+      dockerfile: UsersManagement/TrialsSystem.UserTasksService/Dockerfile
+    depends_on:
+      - mongo
+
+  bs.apigateway.service:
+    image:  bs.apigateway.service
+    container_name:  bs.apigateway.service
+    build:
+      context: .
+      dockerfile: TrialsSystem.ApiGatewayService/Dockerfile
+    depends_on:
+      - um.identity.service
