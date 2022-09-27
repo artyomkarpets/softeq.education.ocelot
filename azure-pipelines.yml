@@ -15,7 +15,7 @@ variables:
   Patch: '0'
 
 stages:
-- stage: Nuget publish
+- stage: NugetPublish
   displayName: Build image
 
   jobs:
