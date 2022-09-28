@@ -49,5 +49,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - JwtOptions__Issuers__0=http://localhost:4102
+      - ConnectionStrings__Authority=http://um.identity.service
     ports:
       - 4104:80

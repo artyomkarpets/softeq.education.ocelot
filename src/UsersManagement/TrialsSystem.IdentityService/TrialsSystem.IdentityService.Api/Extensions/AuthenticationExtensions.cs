@@ -19,10 +19,12 @@ namespace TrialsSystem.IdentityService.Api.Extensions
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
+                         
                         ValidateAudience = false,
                         ValidateIssuer = false,
                         AuthenticationType = "at+jwt",
                         SaveSigninToken = true,
+                        
                     };
                 });
 

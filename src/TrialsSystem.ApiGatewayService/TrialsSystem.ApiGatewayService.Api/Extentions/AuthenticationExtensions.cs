@@ -16,11 +16,11 @@ namespace TrialsSystem.ApiGatewayService.Api.Extentions
                 .AddCookie(cfg => cfg.SlidingExpiration = true)
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {
-                    options.Authority = configuration.GetConnectionString("TokenAuthority");
+                    options.Authority = configuration.GetConnectionString("Authority");
                     options.RequireHttpsMetadata = false;
                     options.RequireHttpsMetadata = false;
                     options.SaveToken = true;
-       
+
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         //todo: update it for production
