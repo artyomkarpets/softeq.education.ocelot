@@ -1,0 +1,26 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/api/v1/{userId}/users",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "um.users.service",
+                    "Port": 80
+                }
+            ],
+            "UpstreamPathTemplate": "/api/v1/users",
+            "UpstreamHttpMethod": [
+                "Post",
+                "Get"
+            ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            },
+            "ChangeDownstreamPathTemplate": {
+                "userId": "Claims[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier] > value"
+            }
+        }
+    ]
+}

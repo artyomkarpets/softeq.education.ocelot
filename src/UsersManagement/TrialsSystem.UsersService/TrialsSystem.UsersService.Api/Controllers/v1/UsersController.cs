@@ -20,10 +20,13 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
     {
         private readonly IMediator _mediator;
         private readonly IUrlHelperFactory _factory;
-        public UsersController(IMediator mediator, IUrlHelperFactory factory)
+        private readonly ILogger<UsersController> _logger;
+
+        public UsersController(IMediator mediator, IUrlHelperFactory factory, ILogger<UsersController> logger)
         {
             _mediator = mediator;
             _factory = factory;
+            _logger = logger;
         }
 
         /// <summary>
@@ -43,10 +46,13 @@ namespace TrialsSystem.UsersService.Api.Controllers.v1
             [FromRoute] string userId,
             [FromQuery] int skip = 0,
             [FromQuery] int take = 20,
+            [FromHeader(Name = "roles")] string? roles = "",
             [FromQuery] string? email = null,
             [FromQuery] string? name = null,
             [FromQuery] string? surname = null)
         {
+            _logger.LogInformation($"Get users by userId:{userId} with roles: {roles}");
+
             var response = await _mediator.Send(
                 new UsersQuery(take, skip, email, name, surname));
             return Ok(response);

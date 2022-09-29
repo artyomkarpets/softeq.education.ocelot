@@ -1,7 +1,9 @@
+using IdentityServer4.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TrialsSystem.IdentityService.Api.Extensions;
 using TrialsSystem.IdentityService.Api.Mapping;
+using TrialsSystem.IdentityService.Api.Profiles;
 using TrialsSystem.IdentityService.Infrastructure;
 using TrialsSystem.IdentityService.Infrastructure.Services;
 
@@ -17,6 +19,7 @@ builder.Services
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IProfileService, ProfileService>();
 
 builder.Services.AddHttpClient<IUsersGatewayService, UsersGatewayService>(httpClient =>
 {

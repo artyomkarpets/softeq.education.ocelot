@@ -184,8 +184,11 @@ namespace TrialsSystem.IdentityService.Api.Controllers
                 var user = new ApplicationUser(model.Email);
                 var result = await _userManager.CreateAsync(user, model.Password);
 
+
                 if (result.Succeeded)
                 {
+
+                    await _userManager.AddToRoleAsync(user, "Participant");
                     await _usersGatewayService.CreateUser(new CreateUserRequest
                     {
                         Email = model.Email,
@@ -206,7 +209,7 @@ namespace TrialsSystem.IdentityService.Api.Controllers
                 {
 
 
-                    ModelState.AddModelError("Identity", result.Errors.ToString());
+                    ModelState.AddModelError("Identity", string.Join(",", result.Errors.Select(x => x.Description)));
                 }
 
             }

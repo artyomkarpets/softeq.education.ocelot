@@ -20,6 +20,13 @@ namespace TrialsSystem.UsersService.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+                config.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                    .AddJsonFile("appsettings.json", true, true)
+                    .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                    .AddEnvironmentVariables());
+
+
             // Add services to the container.
 
             builder.Services.AddControllers();
